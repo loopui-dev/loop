@@ -16,8 +16,10 @@ export interface ActionEventMap<Input extends unknown[] | object> {
 export class FormAction {
     method = "POST";
     action: string = todo();
-    on: ListenerFor<HTMLFormElement, "submit"> = todo();
+    on: { submit: ListenerFor<HTMLFormElement, "submit"> } = todo();
 }
+
+export type ActionState<Value> = LoaderState<Value>;
 
 export class Action<Input extends unknown[], Value = void> extends TypedEventTarget<
     ActionEventMap<Input>
@@ -31,11 +33,7 @@ export class Action<Input extends unknown[], Value = void> extends TypedEventTar
         todo();
     }
 
-    peek(...input: InputWithoutAbortSignal<Input>): Value {
-        todo();
-    }
-
-    get(...input: InputWithoutAbortSignal<Input>): LoaderState<Value> {
+    peek(...input: InputWithoutAbortSignal<Input>): ActionState<Value> {
         todo();
     }
 

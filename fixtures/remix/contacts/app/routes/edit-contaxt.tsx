@@ -25,14 +25,17 @@ export function EditContact(this: Remix.Handle, initialProps: ShowContact.Props)
     return (props: ShowContact.Props) => {
         id = props.id;
 
-        const { on: onsubmit, ...update } = client.contact.update.form({ contactId: id });
+        const {
+            on: { submit },
+            ...action
+        } = client.contact.update.form({ contactId: id });
         const state = client.contact.show.peek({
             params: { contactId: id },
         });
         const contact = state.value as ContactRecord;
 
         return (
-            <form {...update} id="contact-form" on={dom.submit(onsubmit)}>
+            <form {...action} id="contact-form" on={dom.submit(submit)}>
                 <title>{`Editing ${contact.first} ${contact.last} | Remix Contacts`}</title>
                 <p>
                     <span>Name</span>

@@ -45,7 +45,10 @@ export function ShowContact(this: Remix.Handle, initialProps: ShowContact.Props)
     return (props: ShowContact.Props) => {
         id = props.id;
 
-        const { on: onsubmit, ...destroy } = client.contact.destroy.form({
+        const {
+            on: { submit },
+            ...action
+        } = client.contact.destroy.form({
             contactId: id,
         });
         const state = client.contact.show.peek({
@@ -101,7 +104,7 @@ export function ShowContact(this: Remix.Handle, initialProps: ShowContact.Props)
                         >
                             <button type="submit">Edit</button>
                         </form>
-                        <form {...destroy} on={dom.submit(onsubmit)}>
+                        <form {...action} on={dom.submit(submit)}>
                             <button type="submit">Delete</button>
                         </form>
                     </div>

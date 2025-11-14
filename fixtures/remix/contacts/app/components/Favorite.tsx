@@ -30,10 +30,13 @@ export function Favorite(this: Remix.Handle, initialProps: Favorite.Props) {
         id = props.id;
         favorite = props.favorite;
 
-        const { on: onsubmit, ...action } = client.contact.favorite.form({ contactId: id });
+        const {
+            on: { submit },
+            ...action
+        } = client.contact.favorite.form({ contactId: id });
 
         return (
-            <form {...action} on={dom.submit(onsubmit)}>
+            <form {...action} on={dom.submit(submit)}>
                 <button
                     aria-label={optimistic ? "Remove from favorites" : "Add to favorites"}
                     name="favorite"
