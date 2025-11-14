@@ -18,7 +18,7 @@ catalogs:
       version: 2.3.5
     '@typescript/native-preview':
       specifier: latest
-      version: 7.0.0-dev.20251113.1
+      version: 7.0.0-dev.20251114.1
     tsdown:
       specifier: ^0.15.7
       version: 0.15.12
@@ -76,15 +76,15 @@ importers:
       '@loopui/data':
         specifier: workspace:*
         version: link:../../../packages/data
+      '@loopui/dom-router':
+        specifier: workspace:*
+        version: link:../../../packages/dom-router
       '@loopui/fetch-router':
         specifier: workspace:*
         version: link:../../../packages/fetch-router
       '@loopui/interaction':
         specifier: workspace:*
         version: link:../../../packages/interaction
-      '@loopui/view-router':
-        specifier: workspace:*
-        version: link:../../../packages/view-router
       '@loopui/worker':
         specifier: workspace:*
         version: link:../../../packages/worker
@@ -124,7 +124,7 @@ importers:
         version: 1.0.6
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251113.1
+        version: 7.0.0-dev.20251114.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -136,7 +136,7 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251113.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251114.1)(ms@2.1.3)
       vite:
         specifier: npm:rolldown-vite@latest
         version: rolldown-vite@7.2.5(jiti@2.6.1)
@@ -158,7 +158,7 @@ importers:
         version: 0.0.4
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251113.1
+        version: 7.0.0-dev.20251114.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -170,68 +170,9 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251113.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251114.1)(ms@2.1.3)
 
-  packages/fetch-router:
-    dependencies:
-      '@remix-run/fetch-router':
-        specifier: catalog:remix
-        version: 0.8.0(@remix-run/form-data-parser@0.12.0)(@remix-run/headers@0.14.0)(@remix-run/html-template@0.2.0)(@remix-run/route-pattern@0.14.0)
-      '@remix-run/route-pattern':
-        specifier: catalog:remix
-        version: 0.14.0
-    devDependencies:
-      '@biomejs/biome':
-        specifier: catalog:dev
-        version: 2.3.5
-      '@prettier/plugin-oxc':
-        specifier: catalog:prettier
-        version: 0.0.4
-      '@typescript/native-preview':
-        specifier: catalog:dev
-        version: 7.0.0-dev.20251113.1
-      prettier:
-        specifier: catalog:prettier
-        version: 3.6.2
-      prettier-plugin-pkg:
-        specifier: catalog:prettier
-        version: 0.21.2(prettier@3.6.2)
-      prettier-plugin-toml:
-        specifier: catalog:prettier
-        version: 2.0.6(prettier@3.6.2)
-      tsdown:
-        specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251113.1)(ms@2.1.3)
-
-  packages/interaction:
-    dependencies:
-      '@remix-run/interaction':
-        specifier: catalog:remix
-        version: 0.1.0
-    devDependencies:
-      '@biomejs/biome':
-        specifier: catalog:dev
-        version: 2.3.5
-      '@prettier/plugin-oxc':
-        specifier: catalog:prettier
-        version: 0.0.4
-      '@typescript/native-preview':
-        specifier: catalog:dev
-        version: 7.0.0-dev.20251113.1
-      prettier:
-        specifier: catalog:prettier
-        version: 3.6.2
-      prettier-plugin-pkg:
-        specifier: catalog:prettier
-        version: 0.21.2(prettier@3.6.2)
-      prettier-plugin-toml:
-        specifier: catalog:prettier
-        version: 2.0.6(prettier@3.6.2)
-      tsdown:
-        specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251113.1)(ms@2.1.3)
-
-  packages/view-router:
+  packages/dom-router:
     dependencies:
       '@loopui/fetch-router':
         specifier: workspace:*
@@ -251,7 +192,7 @@ importers:
         version: 1.0.6
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251113.1
+        version: 7.0.0-dev.20251114.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -263,7 +204,66 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251113.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251114.1)(ms@2.1.3)
+
+  packages/fetch-router:
+    dependencies:
+      '@remix-run/fetch-router':
+        specifier: catalog:remix
+        version: 0.8.0(@remix-run/form-data-parser@0.12.0)(@remix-run/headers@0.14.0)(@remix-run/html-template@0.2.0)(@remix-run/route-pattern@0.14.0)
+      '@remix-run/route-pattern':
+        specifier: catalog:remix
+        version: 0.14.0
+    devDependencies:
+      '@biomejs/biome':
+        specifier: catalog:dev
+        version: 2.3.5
+      '@prettier/plugin-oxc':
+        specifier: catalog:prettier
+        version: 0.0.4
+      '@typescript/native-preview':
+        specifier: catalog:dev
+        version: 7.0.0-dev.20251114.1
+      prettier:
+        specifier: catalog:prettier
+        version: 3.6.2
+      prettier-plugin-pkg:
+        specifier: catalog:prettier
+        version: 0.21.2(prettier@3.6.2)
+      prettier-plugin-toml:
+        specifier: catalog:prettier
+        version: 2.0.6(prettier@3.6.2)
+      tsdown:
+        specifier: catalog:dev
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251114.1)(ms@2.1.3)
+
+  packages/interaction:
+    dependencies:
+      '@remix-run/interaction':
+        specifier: catalog:remix
+        version: 0.1.0
+    devDependencies:
+      '@biomejs/biome':
+        specifier: catalog:dev
+        version: 2.3.5
+      '@prettier/plugin-oxc':
+        specifier: catalog:prettier
+        version: 0.0.4
+      '@typescript/native-preview':
+        specifier: catalog:dev
+        version: 7.0.0-dev.20251114.1
+      prettier:
+        specifier: catalog:prettier
+        version: 3.6.2
+      prettier-plugin-pkg:
+        specifier: catalog:prettier
+        version: 0.21.2(prettier@3.6.2)
+      prettier-plugin-toml:
+        specifier: catalog:prettier
+        version: 2.0.6(prettier@3.6.2)
+      tsdown:
+        specifier: catalog:dev
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251114.1)(ms@2.1.3)
 
   packages/worker:
     dependencies:
@@ -279,7 +279,7 @@ importers:
         version: 0.0.4
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251113.1
+        version: 7.0.0-dev.20251114.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -291,7 +291,7 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251113.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251114.1)(ms@2.1.3)
 
 packages:
 
@@ -738,43 +738,43 @@ packages:
   '@types/dom-navigation@1.0.6':
     resolution: {integrity: sha512-4srBpebg8rFDm0LafYuWhZMgLoSr5J4gx4q1uaTqOXwVk00y+CkTdJ4SC57sR1cMhP0ZRjApMRdHVcFYOvPGTw==}
 
-  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251113.1':
-    resolution: {integrity: sha512-ArzjtsMWWUSRnqv/C7p+Lv7SJbL9EDGBPDgBvyI+xIcTqyD9WW2sMStjc1jTwWsimmQXzQQ8jZYpf+xSGj5boQ==}
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251114.1':
+    resolution: {integrity: sha512-UMEVTWi17OjarFM18CIkO9wm0JyZanQ9UxXJS5qL0D1Pk9rOKb6nkI1VxIccnHTPBWiYv3f37VxMwxaU9D4+yg==}
     cpu: [arm64]
     os: [darwin]
 
-  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251113.1':
-    resolution: {integrity: sha512-airwguNehqwQhr6LjDcJ0LXfBv2GaOJkpj6fzxMK9gWlrx/tVwvRFoazUesdOnR1DM6zSE4gy+2UROxGeumOSw==}
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251114.1':
+    resolution: {integrity: sha512-Z/OEqEIKEoNrMGIkUlmrAAP04XLAYpUAFxXL5wsVMDVEZCQvf0GTqXrjHKfn1DjqVDSjzVdfB+nzo/tY23jlaA==}
     cpu: [x64]
     os: [darwin]
 
-  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251113.1':
-    resolution: {integrity: sha512-EefJd94Hm2507bMQekjoaad32pjGQgldSNjD1UAp6P0EKsn2wZV7H9gxosbZwL3tgMY/HDrQoS1j240/qv528w==}
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251114.1':
+    resolution: {integrity: sha512-jfC/oa2E8L4ckbgdM3v3dHMvuy1Ar9Ld+XqiRrRmF5sgDn4HntSRl5Eb5KuwNzGsDqTCmxXRLXkjhjvkEghqOQ==}
     cpu: [arm64]
     os: [linux]
 
-  '@typescript/native-preview-linux-arm@7.0.0-dev.20251113.1':
-    resolution: {integrity: sha512-lTYX9vskfbq3kq2+vpqu2fwJP68iZ4OuWHuGLMzS/AlQ1vzs535su/s6xhL8UuyRP+n10A9z2xHq7UJSOx8u1w==}
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20251114.1':
+    resolution: {integrity: sha512-uQH+s8j5LOS436eN3iGzQZF876VEmFR0Xbm2y8Q6KCjOwyRzLG89dMnRlAav1PeVkZhXc5Xd7YZrNXZeDRzD2A==}
     cpu: [arm]
     os: [linux]
 
-  '@typescript/native-preview-linux-x64@7.0.0-dev.20251113.1':
-    resolution: {integrity: sha512-2VLSCSHgnb94BLLeb1LGYTMIRgbCWkpJa74U45Fi9W+ErTW5QJR+b/nzKAzeeL8/6vu5cfnW4Yf5pCU4d+IvTg==}
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20251114.1':
+    resolution: {integrity: sha512-julOFdTg+/aNO92rkyqzEHnehdjDo3ha+fgI7QmFf5Mfnw3DeRZ/DeaqODiqXKHpBACkJ5DPrIEltMo81ySC3g==}
     cpu: [x64]
     os: [linux]
 
-  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251113.1':
-    resolution: {integrity: sha512-byymVRxjqyQPBDpTxcfFprfNTN0e8RXE1VRmVrMU4kJeCxC9SRPQAZCIFw5bJKt74iic7Ixk0O+Ehjp+YlH/VQ==}
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251114.1':
+    resolution: {integrity: sha512-oPuFHAxFaaes/hOKy5C8GYSYdw0YnhAl2TKlCyodc8HA4YMEM7d6y/v21MqmKsBsCaG/sT/VS41AnVHB3njSrg==}
     cpu: [arm64]
     os: [win32]
 
-  '@typescript/native-preview-win32-x64@7.0.0-dev.20251113.1':
-    resolution: {integrity: sha512-H6dR8nmGmuKduG8kODnb5bRgsTScjJ7lLpG6cch+3MflNaIymMAiQsku2kWKtMiFp94wHgQIFk88ov2wG91FYw==}
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20251114.1':
+    resolution: {integrity: sha512-6JwBfDEwvTUg4dO2AgJ2CxOpnVlACXLQyY6btOx4FzmpyDKx3hP1+u/AN6xxGMEztmc0XZpsNZ1T2nIZyT1uGA==}
     cpu: [x64]
     os: [win32]
 
-  '@typescript/native-preview@7.0.0-dev.20251113.1':
-    resolution: {integrity: sha512-gxe+j1h5DSnP/rE2+4BGSzfKRg2RdmMtHlPX+oH1iLGOHTWLQ5IVtS7hW2IlGJY2Y1dXXDARh9wRYzePPXyh8g==}
+  '@typescript/native-preview@7.0.0-dev.20251114.1':
+    resolution: {integrity: sha512-Am1ISG+Iz8mGHfUgZtm9WHSM1kPc8p0RcyoD2eO3cPprBMvttFnAqQ8X5GVGPxOrQBglQ69kkd6+mnkZ0k9YUA==}
     hasBin: true
 
   ansis@4.2.0:
@@ -1441,36 +1441,36 @@ snapshots:
 
   '@types/dom-navigation@1.0.6': {}
 
-  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251113.1':
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251114.1':
     optional: true
 
-  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251113.1':
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251114.1':
     optional: true
 
-  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251113.1':
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251114.1':
     optional: true
 
-  '@typescript/native-preview-linux-arm@7.0.0-dev.20251113.1':
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20251114.1':
     optional: true
 
-  '@typescript/native-preview-linux-x64@7.0.0-dev.20251113.1':
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20251114.1':
     optional: true
 
-  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251113.1':
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251114.1':
     optional: true
 
-  '@typescript/native-preview-win32-x64@7.0.0-dev.20251113.1':
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20251114.1':
     optional: true
 
-  '@typescript/native-preview@7.0.0-dev.20251113.1':
+  '@typescript/native-preview@7.0.0-dev.20251114.1':
     optionalDependencies:
-      '@typescript/native-preview-darwin-arm64': 7.0.0-dev.20251113.1
-      '@typescript/native-preview-darwin-x64': 7.0.0-dev.20251113.1
-      '@typescript/native-preview-linux-arm': 7.0.0-dev.20251113.1
-      '@typescript/native-preview-linux-arm64': 7.0.0-dev.20251113.1
-      '@typescript/native-preview-linux-x64': 7.0.0-dev.20251113.1
-      '@typescript/native-preview-win32-arm64': 7.0.0-dev.20251113.1
-      '@typescript/native-preview-win32-x64': 7.0.0-dev.20251113.1
+      '@typescript/native-preview-darwin-arm64': 7.0.0-dev.20251114.1
+      '@typescript/native-preview-darwin-x64': 7.0.0-dev.20251114.1
+      '@typescript/native-preview-linux-arm': 7.0.0-dev.20251114.1
+      '@typescript/native-preview-linux-arm64': 7.0.0-dev.20251114.1
+      '@typescript/native-preview-linux-x64': 7.0.0-dev.20251114.1
+      '@typescript/native-preview-win32-arm64': 7.0.0-dev.20251114.1
+      '@typescript/native-preview-win32-x64': 7.0.0-dev.20251114.1
 
   ansis@4.2.0: {}
 
@@ -1637,7 +1637,7 @@ snapshots:
 
   resolve-pkg-maps@1.0.0: {}
 
-  rolldown-plugin-dts@0.17.7(@typescript/native-preview@7.0.0-dev.20251113.1)(ms@2.1.3)(rolldown@1.0.0-beta.45):
+  rolldown-plugin-dts@0.17.7(@typescript/native-preview@7.0.0-dev.20251114.1)(ms@2.1.3)(rolldown@1.0.0-beta.45):
     dependencies:
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
@@ -1650,7 +1650,7 @@ snapshots:
       obug: 1.0.0(ms@2.1.3)
       rolldown: 1.0.0-beta.45
     optionalDependencies:
-      '@typescript/native-preview': 7.0.0-dev.20251113.1
+      '@typescript/native-preview': 7.0.0-dev.20251114.1
     transitivePeerDependencies:
       - ms
       - oxc-resolver
@@ -1725,7 +1725,7 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
-  tsdown@0.15.12(@typescript/native-preview@7.0.0-dev.20251113.1)(ms@2.1.3):
+  tsdown@0.15.12(@typescript/native-preview@7.0.0-dev.20251114.1)(ms@2.1.3):
     dependencies:
       ansis: 4.2.0
       cac: 6.7.14
@@ -1735,7 +1735,7 @@ snapshots:
       empathic: 2.0.0
       hookable: 5.5.3
       rolldown: 1.0.0-beta.45
-      rolldown-plugin-dts: 0.17.7(@typescript/native-preview@7.0.0-dev.20251113.1)(ms@2.1.3)(rolldown@1.0.0-beta.45)
+      rolldown-plugin-dts: 0.17.7(@typescript/native-preview@7.0.0-dev.20251114.1)(ms@2.1.3)(rolldown@1.0.0-beta.45)
       semver: 7.7.3
       tinyexec: 1.0.2
       tinyglobby: 0.2.15

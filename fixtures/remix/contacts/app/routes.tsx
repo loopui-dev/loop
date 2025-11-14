@@ -1,4 +1,4 @@
-import { type AppHandlers, createRoutes } from "@loopui/view-router";
+import { type AppHandlers, createRoutes } from "@loopui/dom-router";
 import type { Remix } from "@remix-run/dom";
 import { client } from "./api.ts";
 import { EditContact } from "./routes/edit-contaxt.tsx";

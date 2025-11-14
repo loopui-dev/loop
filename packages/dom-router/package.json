@@ -1,13 +1,13 @@
 {
-    "name": "@loopui/view-router",
+    "name": "@loopui/dom-router",
     "version": "0.1.0",
     "type": "module",
     "repository": {
         "type": "git",
         "url": "https://github.com/loopui/loop.git",
-        "directory": "packages/view-router"
+        "directory": "packages/dom-router"
     },
-    "homepage": "https://github.com/loopui/loop/tree/main/packages/view-router#readme",
+    "homepage": "https://github.com/loopui/loop/tree/main/packages/dom-router#readme",
     "bugs": {
         "url": "https://github.com/loopui/loop/issues"
     },

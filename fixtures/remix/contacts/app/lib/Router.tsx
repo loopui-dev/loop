@@ -1,5 +1,5 @@
-import type { AppHandlers } from "@loopui/view-router";
-import { Router as ViewRouter } from "@loopui/view-router";
+import type { AppHandlers } from "@loopui/dom-router";
+import { Router as ViewRouter } from "@loopui/dom-router";
 import type { Remix } from "@remix-run/dom";
 import { on } from "@remix-run/interaction";
 

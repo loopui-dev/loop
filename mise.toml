@@ -24,8 +24,8 @@ depends = [":fmt", ":lint"]
 
 # [tasks.dev-dom]
 # description = "Watch @loopui/dom and run Loop Contacts example app"
-# depends = ["//packages/dom:dev", "//packages/view-router:dev", "//examples/loop/contacts:dev"]
+# depends = ["//packages/dom:dev", "//packages/dom-router:dev", "//examples/loop/contacts:dev"]
 
-# [tasks.dev-view-router]
-# description = "Watch @loopui/view-router and run Remix Contacts example app"
-# depends = ["//packages/view-router:dev", "//examples/remix/contacts:dev"]
+# [tasks.dev-dom-router]
+# description = "Watch @loopui/dom-router and run Remix Contacts example app"
+# depends = ["//packages/dom-router:dev", "//examples/remix/contacts:dev"]
