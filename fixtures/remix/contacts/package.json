@@ -1,0 +1,31 @@
+{
+    "name": "remix-3-contacts",
+    "type": "module",
+    "private": true,
+    "dependencies": {
+        "@loopui/data": "workspace:*",
+        "@loopui/fetch-router": "workspace:*",
+        "@loopui/interaction": "workspace:*",
+        "@loopui/view-router": "workspace:*",
+        "@loopui/worker": "workspace:*",
+        "@remix-run/dom": "catalog:remix",
+        "@remix-run/events": "catalog:remix",
+        "@remix-run/fetch-router": "catalog:remix",
+        "@remix-run/style": "catalog:remix",
+        "@std/assert": "catalog:std",
+        "@std/async": "catalog:std",
+        "match-sorter": "catalog:",
+        "sort-by": "catalog:"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "catalog:dev",
+        "@prettier/plugin-oxc": "catalog:prettier",
+        "@types/dom-navigation": "catalog:types",
+        "@typescript/native-preview": "catalog:dev",
+        "prettier": "catalog:prettier",
+        "prettier-plugin-pkg": "catalog:prettier",
+        "prettier-plugin-toml": "catalog:prettier",
+        "tsdown": "catalog:dev",
+        "vite": "catalog:dev"
+    }
+}

@@ -1,0 +1,50 @@
+# Lets us use prettier from the root of the workspace
+nodeLinker: hoisted
+
+packages:
+    - "fixtures/**/*"
+    - "packages/*"
+
+catalog:
+    match-sorter: ^8.1.0
+    sort-by: ^1.2.0
+
+catalogs:
+    remix:
+        "@remix-run/dom": jam
+        "@remix-run/events": jam
+        "@remix-run/fetch-router": ^0.8.0
+        "@remix-run/file-storage": latest
+        "@remix-run/headers": latest
+        "@remix-run/interaction": latest
+        "@remix-run/lazy-file": latest
+        "@remix-run/library": jam
+        "@remix-run/node-fetch-server": latest
+        "@remix-run/route-pattern": ^0.14.0
+        "@remix-run/style": jam
+    crank:
+        "@b9g/crank": ^0.7.2
+    std:
+        "@std/assert": jsr:^1.0.15
+        "@std/async": jsr:^1.0.15
+    types:
+        "@types/dom-navigation": ^1.0.6
+        "@types/node": ^24.9.2
+    dev:
+        vite: npm:rolldown-vite@latest
+        tsdown: ^0.15.7
+        "@typescript/native-preview": latest
+        "@biomejs/biome": ^2.3.5
+    prettier:
+        "@prettier/plugin-oxc": ^0.0.4
+        prettier: ^3.6.2
+        prettier-plugin-pkg: ^0.21.2
+        prettier-plugin-toml: ^2.0.6
+
+overrides:
+    vite: npm:rolldown-vite@latest
+
+onlyBuiltDependencies:
+    - esbuild
+    - sharp
+    - unrs-resolver

@@ -1,0 +1,42 @@
+{
+    "name": "@loopui/worker",
+    "version": "0.1.0",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/loopui/loop.git",
+        "directory": "packages/worker"
+    },
+    "homepage": "https://github.com/loopui/loop/tree/main/packages/worker#readme",
+    "bugs": {
+        "url": "https://github.com/loopui/loop/issues"
+    },
+    "author": "Mark Malstrom <mark@malstrom.me>",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "module": "dist/index.js",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "dependencies": {
+        "@loopui/interaction": "workspace:*"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "catalog:dev",
+        "@prettier/plugin-oxc": "catalog:prettier",
+        "@typescript/native-preview": "catalog:dev",
+        "prettier": "catalog:prettier",
+        "prettier-plugin-pkg": "catalog:prettier",
+        "prettier-plugin-toml": "catalog:prettier",
+        "tsdown": "catalog:dev"
+    }
+}

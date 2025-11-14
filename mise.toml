@@ -1,0 +1,31 @@
+experimental_monorepo_root = true
+
+[tools]
+node = "latest"
+pnpm = "latest"
+
+[hooks]
+postinstall = "pnpm install"
+
+[env]
+_.path = ["{{config_root}}/node_modules/.bin"]
+
+[tasks.fmt]
+description = "Format the entire repository"
+run = "prettier --write ."
+
+[tasks.lint]
+description = "Lint the entire repository"
+run = "biome check --write --unsafe ."
+
+[tasks.fix]
+description = "Format and lint the entire repository"
+depends = [":fmt", ":lint"]
+
+# [tasks.dev-dom]
+# description = "Watch @loopui/dom and run Loop Contacts example app"
+# depends = ["//packages/dom:dev", "//packages/view-router:dev", "//examples/loop/contacts:dev"]
+
+# [tasks.dev-view-router]
+# description = "Watch @loopui/view-router and run Remix Contacts example app"
+# depends = ["//packages/view-router:dev", "//examples/remix/contacts:dev"]
