@@ -2,7 +2,7 @@ import type { HrefParams, HrefSearchParams, RequiredParams } from "@loopui/fetch
 import type { RequestMethod, Route } from "@remix-run/fetch-router";
 import type { Action } from "./action.ts";
 import { todo } from "./index.ts";
-import type { Query } from "./query.ts";
+import type { Loader } from "./loader.ts";
 import type { FormMethod, Json } from "./types.ts";
 
 export type FetchOptions<Method extends RequestMethod | "ANY", Pattern extends string> = [
@@ -45,8 +45,8 @@ type _Action<Pattern extends string> =
 
 type EnhancedRoute<R> =
     R extends Route<"GET", infer Pattern extends string>
-        ? // TODO: Figure out how to get Query<_, Value> instead of Query<_, any>
-          R & Query<[FetchOptions<"GET", Pattern>], any>
+        ? // TODO: Figure out how to get Loader<_, Value> instead of Loader<_, any>
+          R & Loader<[FetchOptions<"GET", Pattern>], any>
         : R extends Route<FormMethod, infer Pattern extends string>
           ? R & _Action<Pattern>
           : R;

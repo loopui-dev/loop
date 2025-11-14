@@ -4,43 +4,43 @@ import type { InputWithoutAbortSignal, NormalizeInput } from "./types.ts";
 
 export type Status = "idle" | "loading" | "success" | "error" | "stale";
 
-export type QueryState<Value> =
+export type LoaderState<Value> =
     | { status: "idle"; value?: undefined; error?: undefined }
     | { status: "pending"; value?: Value; error?: undefined; promise: Promise<Value> }
     | { status: "success"; value: Value; error?: undefined }
     | { status: "error"; value?: Value; error: unknown };
 
-export class QueryEvent<Input extends unknown[] | object, Value> extends Event {
+export class LoaderEvent<Input extends unknown[] | object, Value> extends Event {
     input: NormalizeInput<Input> = todo();
-    state: QueryState<Value> = todo();
+    state: LoaderState<Value> = todo();
 
-    constructor(name: Exclude<keyof QueryEventMap<Input, Value>, "statechange">) {
+    constructor(name: Exclude<keyof LoaderEventMap<Input, Value>, "statechange">) {
         super(name);
         todo();
     }
 }
 
-export class QueryStateChangeEvent<Input extends unknown[] | object, Value> extends Event {
+export class LoaderStateChangeEvent<Input extends unknown[] | object, Value> extends Event {
     input: NormalizeInput<Input> = todo();
-    current: QueryState<Value> = todo();
-    previous: QueryState<Value> = todo();
+    current: LoaderState<Value> = todo();
+    previous: LoaderState<Value> = todo();
 
-    constructor(name: Extract<keyof QueryEventMap<Input, Value>, "statechange">) {
+    constructor(name: Extract<keyof LoaderEventMap<Input, Value>, "statechange">) {
         super(name);
         todo();
     }
 }
 
-export interface QueryEventMap<Input extends unknown[] | object, Value> {
-    statechange: QueryStateChangeEvent<Input, Value>;
-    invalidate: QueryEvent<Input, Value>;
-    refetch: QueryEvent<Input, Value>;
-    fetch: QueryEvent<Input, Value>;
-    evict: QueryEvent<Input, Value>;
+export interface LoaderEventMap<Input extends unknown[] | object, Value> {
+    statechange: LoaderStateChangeEvent<Input, Value>;
+    invalidate: LoaderEvent<Input, Value>;
+    refetch: LoaderEvent<Input, Value>;
+    fetch: LoaderEvent<Input, Value>;
+    evict: LoaderEvent<Input, Value>;
 }
 
-export class Query<Input extends unknown[], Value> extends TypedEventTarget<
-    QueryEventMap<Input, Value>
+export class Loader<Input extends unknown[], Value> extends TypedEventTarget<
+    LoaderEventMap<Input, Value>
 > {
     key: string = todo();
     keyFor(...input: InputWithoutAbortSignal<Input>): string {
@@ -55,7 +55,7 @@ export class Query<Input extends unknown[], Value> extends TypedEventTarget<
     fetch(...input: InputWithoutAbortSignal<Input>): Promise<Value> {
         todo();
     }
-    peek(...input: InputWithoutAbortSignal<Input>): QueryState<Value> {
+    peek(...input: InputWithoutAbortSignal<Input>): LoaderState<Value> {
         todo();
     }
 

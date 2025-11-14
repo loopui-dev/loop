@@ -4,4 +4,4 @@ export function todo(): never {
 
 export * from "./action.ts";
 export * from "./client.ts";
-export * from "./query.ts";
+export * from "./loader.ts";

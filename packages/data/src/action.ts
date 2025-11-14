@@ -1,7 +1,7 @@
 import type { ListenerFor } from "@loopui/interaction";
 import { TypedEventTarget } from "@loopui/interaction";
 import { todo } from "./index.ts";
-import type { QueryState } from "./query.ts";
+import type { LoaderState } from "./loader.ts";
 import type { InputWithoutAbortSignal, InputWithoutFormData, NormalizeInput } from "./types.ts";
 
 export class FormActionEnhanceEvent<Input extends unknown[] | object> extends SubmitEvent {
@@ -35,7 +35,7 @@ export class Action<Input extends unknown[], Value = void> extends TypedEventTar
         todo();
     }
 
-    get(...input: InputWithoutAbortSignal<Input>): QueryState<Value> {
+    get(...input: InputWithoutAbortSignal<Input>): LoaderState<Value> {
         todo();
     }
 
