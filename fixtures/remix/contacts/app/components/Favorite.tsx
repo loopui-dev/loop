@@ -1,7 +1,7 @@
 import type { Remix } from "@remix-run/dom";
 import { dom } from "@remix-run/events";
 import { on } from "@remix-run/interaction";
-import { client } from "~/api.ts";
+import { client } from "~/client.ts";
 
 export namespace Favorite {
     export interface Props {
@@ -13,16 +13,18 @@ export namespace Favorite {
 export function Favorite(this: Remix.Handle, initialProps: Favorite.Props) {
     let id = initialProps.id;
     let favorite = initialProps.favorite;
+    let optimistic: boolean | undefined;
 
-    let optimistic = favorite;
+    const fave = client.contact.favorite.filter(([params]) => params.contactId === id);
 
-    on(client.contact.favorite, this.signal, {
-        enhance: event => {
-            const [params] = event.input;
-            if (params.contactId === id) {
-                optimistic = event.formData ? event.formData.get("favorite") === "true" : favorite;
-                this.update();
-            }
+    on(fave, this.signal, {
+        submit: ({ formData }) => {
+            optimistic = formData.get("favorite") === "true";
+            this.update();
+        },
+        settled: () => {
+            optimistic = undefined;
+            this.update();
         },
     });
 
@@ -35,15 +37,17 @@ export function Favorite(this: Remix.Handle, initialProps: Favorite.Props) {
             ...action
         } = client.contact.favorite.form({ contactId: id });
 
+        const effective = optimistic ?? favorite;
+
         return (
             <form {...action} on={dom.submit(submit)}>
                 <button
-                    aria-label={optimistic ? "Remove from favorites" : "Add to favorites"}
+                    aria-label={effective ? "Remove from favorites" : "Add to favorites"}
                     name="favorite"
                     type="submit"
-                    value={optimistic ? "false" : "true"}
+                    value={effective ? "false" : "true"}
                 >
-                    {optimistic ? "★" : "☆"}
+                    {effective ? "★" : "☆"}
                 </button>
             </form>
         );

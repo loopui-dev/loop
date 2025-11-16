@@ -1,6 +1,7 @@
 import type { Remix } from "@remix-run/dom";
 import { on } from "@remix-run/interaction";
-import { client } from "~/api.ts";
+import { assert } from "@std/assert";
+import { client } from "~/client.ts";
 import { Router } from "~/lib/Router.tsx";
 import { Root } from "~/routes/root.tsx";
 import { routes } from "~/routes.tsx";
@@ -13,10 +14,10 @@ export function Sidebar(this: Remix.Handle) {
 
     return () => {
         const { query } = this.context.get(Root);
-        const state = client.contact.list.peek({
+        const { value: contacts } = client.contact.list.get({
             searchParams: { q: query },
         });
-        const contacts = state.value as ContactRecord[];
+        assert(contacts, "contacts not preloaded");
 
         return (
             <nav>

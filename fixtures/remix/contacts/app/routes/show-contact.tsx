@@ -1,11 +1,11 @@
 import type { Remix } from "@remix-run/dom";
 import { dom } from "@remix-run/events";
 import { on } from "@remix-run/interaction";
-import { client } from "~/api.ts";
+import { assert } from "@std/assert";
+import { client } from "~/client.ts";
 import { Favorite } from "~/components/Favorite.tsx";
 import { Router } from "~/lib/Router.tsx";
 import { routes } from "~/routes.tsx";
-import type { ContactRecord } from "~/worker/contacts.ts";
 
 export namespace ShowContact {
     export interface Props {
@@ -19,25 +19,14 @@ export function ShowContact(this: Remix.Handle, initialProps: ShowContact.Props)
     const router = this.context.get(Router);
     on(router, this.signal, { navigatesuccess: () => this.update() });
 
-    on(client.contact.show, this.signal, {
-        statechange: ({ input }) => {
-            const [{ params }] = input;
-            if (params.contactId === id) {
-                this.update();
-            }
-        },
-    });
+    const show = client.contact.show.filter(([{ params }]) => params.contactId === id);
+    on(show, this.signal, { statechange: () => this.update() });
 
-    on(client.contact.destroy, this.signal, {
-        enhance: event => {
-            const [params] = event.input;
-            if (params.contactId === id) {
-                const pleaseDontDestroy = !confirm(
-                    "Please confirm you want to delete this record.",
-                );
-                if (pleaseDontDestroy) {
-                    event.preventDefault();
-                }
+    const destroy = client.contact.destroy.filter(([params]) => params.contactId === id);
+    on(destroy, this.signal, {
+        submit(event) {
+            if (!confirm("Please confirm you want to delete this record.")) {
+                event.preventDefault();
             }
         },
     });
@@ -51,14 +40,12 @@ export function ShowContact(this: Remix.Handle, initialProps: ShowContact.Props)
         } = client.contact.destroy.form({
             contactId: id,
         });
-        const state = client.contact.show.peek({
-            params: { contactId: id },
-        });
-        const contact = state.value as ContactRecord;
+
+        const { value: contact } = client.contact.show.get({ params: { contactId: id } });
+        assert(contact, "contact not preloaded");
 
         return (
             <div id="contact">
-                <title>{`${contact.first} ${contact.last} | Remix Contacts`}</title>
                 <div>
                     <img
                         alt=""

@@ -2,9 +2,9 @@ import type { Remix } from "@remix-run/dom";
 import { dom } from "@remix-run/events";
 import { press } from "@remix-run/events/press";
 import { on } from "@remix-run/interaction";
-import { client } from "~/api.ts";
+import { assert } from "@std/assert";
+import { client } from "~/client.ts";
 import { Router } from "~/lib/Router.tsx";
-import type { ContactRecord } from "~/worker/contacts.ts";
 import type { ShowContact } from "./show-contact.tsx";
 
 export function EditContact(this: Remix.Handle, initialProps: ShowContact.Props) {
@@ -13,14 +13,8 @@ export function EditContact(this: Remix.Handle, initialProps: ShowContact.Props)
     const router = this.context.get(Router);
     on(router, this.signal, { navigatesuccess: () => this.update() });
 
-    on(client.contact.show, this.signal, {
-        statechange: ({ input }) => {
-            const [{ params }] = input;
-            if (params.contactId === id) {
-                this.update();
-            }
-        },
-    });
+    const show = client.contact.show.filter(([{ params }]) => params.contactId === id);
+    on(show, this.signal, { statechange: () => this.update() });
 
     return (props: ShowContact.Props) => {
         id = props.id;
@@ -29,14 +23,12 @@ export function EditContact(this: Remix.Handle, initialProps: ShowContact.Props)
             on: { submit },
             ...action
         } = client.contact.update.form({ contactId: id });
-        const state = client.contact.show.peek({
-            params: { contactId: id },
-        });
-        const contact = state.value as ContactRecord;
+
+        const { value: contact } = client.contact.show.get({ params: { contactId: id } });
+        assert(contact, "contact not preloaded");
 
         return (
             <form {...action} id="contact-form" on={dom.submit(submit)}>
-                <title>{`Editing ${contact.first} ${contact.last} | Remix Contacts`}</title>
                 <p>
                     <span>Name</span>
                     <input

@@ -1,4 +1,3 @@
-import { createClient } from "@loopui/data";
 import { createResources, createRoutes } from "@remix-run/fetch-router";
 
 export const api = createRoutes("/api", {
@@ -11,5 +10,3 @@ export const api = createRoutes("/api", {
         favorite: { method: "PUT", pattern: "/contact/:contactId/favorite" },
     },
 });
-
-export const client = createClient(api);

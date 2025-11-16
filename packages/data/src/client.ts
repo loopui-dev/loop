@@ -1,4 +1,9 @@
-import type { HrefParams, HrefSearchParams, RequiredParams } from "@loopui/fetch-router";
+import type {
+    HrefParams,
+    HrefSearchParams,
+    RequiredParams,
+    TypedResponse,
+} from "@loopui/fetch-router";
 import type { RequestMethod, Route } from "@remix-run/fetch-router";
 import type { Action } from "./action.ts";
 import { todo } from "./index.ts";
@@ -43,22 +48,31 @@ type _Action<Pattern extends string> =
         ? Omit<Action<[FormData]>, "with"> & { with(impossible: Impossible): never }
         : Action<[HrefParams.Input<Pattern>, FormData]>;
 
-type EnhancedRoute<R> =
+type HandlerReturn<H> = H extends (...args: any[]) => Promise<TypedResponse<infer T>>
+    ? T
+    : H extends (...args: any[]) => TypedResponse<infer T>
+      ? T
+      : any;
+
+type EnhancedRoute<R, H> =
+    // GET routes become Loaders with the right Value
     R extends Route<"GET", infer Pattern extends string>
-        ? // TODO: Figure out how to get Loader<_, Value> instead of Loader<_, any>
-          R & Loader<[FetchOptions<"GET", Pattern>], any>
+        ? R & Loader<[FetchOptions<"GET", Pattern>], HandlerReturn<H>>
         : R extends Route<FormMethod, infer Pattern extends string>
           ? R & _Action<Pattern>
           : R;
 
-type EnhanceRouteMap<T> = {
-    [K in keyof T]: T[K] extends Route<any, any>
-        ? EnhancedRoute<T[K]>
-        : T[K] extends object
-          ? EnhanceRouteMap<T[K]>
-          : T[K];
+type EnhanceRouteMap<Api, Handlers> = {
+    [K in keyof Api]: Api[K] extends Route<any, any>
+        ? // Leaf: Api[K] is a Route, Handlers[K] is its handler
+          EnhancedRoute<Api[K], K extends keyof Handlers ? Handlers[K] : unknown>
+        : Api[K] extends object
+          ? // Nested: recurse into both Api[K] and Handlers[K]
+            EnhanceRouteMap<Api[K], K extends keyof Handlers ? Handlers[K] : {}>
+          : // Anything else just passes through
+            Api[K];
 };
 
-export function createClient<T>(map: T): EnhanceRouteMap<T> {
+export function createClient<Api, Handlers>(routes: Api): EnhanceRouteMap<Api, Handlers> {
     return todo();
 }

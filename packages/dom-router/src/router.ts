@@ -46,6 +46,8 @@ export class Router<Renderable = unknown>
 
     searchParams: Router.SearchParams = todo();
 
+    ready: Promise<boolean> = todo();
+
     // Navigation API methods mirrored from window.navigation
     navigate(url: string, options?: NavigationNavigateOptions): NavigationResult {
         todo();

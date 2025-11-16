@@ -6,12 +6,16 @@ import { handlers, routes } from "./routes.tsx";
 
 import "./index.css";
 
-const worker = import.meta.env.DEV ? "/entry.worker.ts" : "/entry.worker.js";
-const registry = new WorkerRegistry(worker);
+const script = import.meta.env.DEV ? "/entry.worker.ts" : "/entry.worker.js";
+const registry = new WorkerRegistry(script);
 
 on(registry, {
     registered() {
-        createRoot(document.body).render(<Router routes={routes}>{handlers}</Router>);
+        createRoot(document.body).render(
+            <Router fallback={<p class="loading">Loading...</p>} routes={routes}>
+                {handlers}
+            </Router>,
+        );
     },
 });
 

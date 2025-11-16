@@ -6,6 +6,7 @@ import type {
     RouteDefs,
     RouteMap,
 } from "@remix-run/fetch-router";
+import { json as fetchRouterJson } from "@remix-run/fetch-router/response-helpers";
 import type { HrefBuilderArgs } from "@remix-run/route-pattern";
 
 export type RouteHandlers<routes extends RouteMap> =
@@ -74,11 +75,6 @@ export namespace HrefParams {
     }
 }
 
-// export type HrefSearchParams<T extends string> = Extract<
-//     HrefBuilderArgs<T>[1],
-//     Record<string, any>
-// >;
-
 export namespace HrefSearchParams {
     export type Input<T extends string> = T extends `${string}?${infer SearchString}`
         ? ParseSearchParamsInput<SearchString>
@@ -112,4 +108,14 @@ export namespace HrefSearchParams {
         : S extends string
           ? { [K in S]?: ParamValue }
           : {};
+}
+
+// A thin typed wrapper over whatever fetch-router's Response actually is
+export interface TypedResponse<T = unknown> extends Response {
+    // purely at the type level
+    readonly _data?: T;
+}
+
+export function json<T>(data: T, init?: ResponseInit): TypedResponse<T> {
+    return fetchRouterJson(data, init) as TypedResponse<T>;
 }
