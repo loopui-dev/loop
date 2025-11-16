@@ -3,7 +3,7 @@ import type { AppHandlers } from "./handlers.ts";
 import { todo } from "./index.ts";
 
 type NavigationNavigateEvent = NavigateEvent;
-type GlobalNavigation = Omit<
+type DOMNavigation = Omit<
     Navigation,
     | "addEventListener"
     | "removeEventListener"
@@ -12,11 +12,11 @@ type GlobalNavigation = Omit<
     | "onnavigateerror"
     | "oncurrententrychange"
 >;
-type GlobalErrorEvent = ErrorEvent;
+type DOMErrorEvent = ErrorEvent;
 
 export class Router<Renderable = unknown>
     extends TypedEventTarget<Router.EventMap<Renderable>>
-    implements GlobalNavigation
+    implements DOMNavigation
 {
     // Navigation API properties mirrored from window.navigation
     currentEntry: NavigationHistoryEntry | null = todo();
@@ -147,7 +147,7 @@ export class Router<Renderable = unknown>
 export namespace Router {
     export interface NavigateEvent extends NavigationNavigateEvent {}
     export interface SuccessEvent extends Event {}
-    export interface ErrorEvent extends GlobalErrorEvent {}
+    export interface ErrorEvent extends DOMErrorEvent {}
     export interface CurrentEntryChangeEvent<Renderable = unknown> extends Event {
         navigationType: NavigationTypeString | null;
         from: NavigationHistoryEntry;
