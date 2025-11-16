@@ -10,15 +10,15 @@ import {
     updateContact,
 } from "./contacts.ts";
 
-export const handlers = {
+export let handlers = {
     contact: {
         async list({ url }) {
-            const query = url.searchParams.get("q");
-            const contacts = await getContacts(query);
+            let query = url.searchParams.get("q");
+            let contacts = await getContacts(query);
             return json(contacts);
         },
         async show({ params }) {
-            const contact = await getContact(String(params.contactId));
+            let contact = await getContact(String(params.contactId));
             return json(contact);
         },
         async destroy({ params }) {
@@ -26,7 +26,7 @@ export const handlers = {
             return redirect(routes.index.href());
         },
         async update({ params, formData }) {
-            const contact = await updateContact(String(params.contactId), {
+            let contact = await updateContact(String(params.contactId), {
                 first: formData.get("first") as string,
                 last: formData.get("last") as string,
                 twitter: formData.get("twitter") as string,
@@ -40,7 +40,7 @@ export const handlers = {
             return new Response(null);
         },
         async favorite({ params, formData }) {
-            const favorite = formData.get("favorite") === "true";
+            let favorite = formData.get("favorite") === "true";
             await updateContact(String(params.contactId), { favorite });
             return new Response(null);
         },

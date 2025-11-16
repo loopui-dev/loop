@@ -40,8 +40,8 @@ export type FetchOptions<Method extends RequestMethod | "ANY", Pattern extends s
 type IsEmptyObject<T> = {} extends T ? ([keyof T] extends [never] ? true : false) : false;
 
 // A branded type that cannot be instantiated
-declare const __brand: unique symbol;
-type Impossible = { [__brand]: never };
+declare const BRAND: unique symbol;
+type Impossible = { [BRAND]: never };
 
 type _Action<Pattern extends string> =
     IsEmptyObject<HrefParams.Input<Pattern>> extends true
@@ -73,6 +73,6 @@ type EnhanceRouteMap<Api, Handlers> = {
             Api[K];
 };
 
-export function createClient<Api, Handlers>(routes: Api): EnhanceRouteMap<Api, Handlers> {
+export function createClient<Api, Handlers>(_routes: Api): EnhanceRouteMap<Api, Handlers> {
     return todo();
 }

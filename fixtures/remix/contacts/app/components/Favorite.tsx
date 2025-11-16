@@ -15,7 +15,7 @@ export function Favorite(this: Remix.Handle, initialProps: Favorite.Props) {
     let favorite = initialProps.favorite;
     let optimistic: boolean | undefined;
 
-    const fave = client.contact.favorite.filter(([params]) => params.contactId === id);
+    let fave = client.contact.favorite.filter(([params]) => params.contactId === id);
 
     on(fave, this.signal, {
         submit: ({ formData }) => {
@@ -32,12 +32,12 @@ export function Favorite(this: Remix.Handle, initialProps: Favorite.Props) {
         id = props.id;
         favorite = props.favorite;
 
-        const {
+        let {
             on: { submit },
             ...action
         } = client.contact.favorite.form({ contactId: id });
 
-        const effective = optimistic ?? favorite;
+        let effective = optimistic ?? favorite;
 
         return (
             <form {...action} on={dom.submit(submit)}>

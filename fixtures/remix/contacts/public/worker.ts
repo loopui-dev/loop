@@ -8,7 +8,7 @@ import { handlers } from "~/worker/handlers.ts";
 
 declare const self: ServiceWorkerGlobalScope & TypedEventTarget<ServiceWorkerGlobalScopeEventMap>;
 
-const router = createRouter({
+let router = createRouter({
     middleware: [
         formData(),
         methodOverride(),
@@ -27,9 +27,9 @@ on(self, {
         self.clients.claim();
     },
     fetch(event) {
-        const url = new URL(event.request.url);
-        const sameOrigin = url.origin === location.origin;
-        const maybeApi = url.pathname.startsWith("/api/");
+        let url = new URL(event.request.url);
+        let sameOrigin = url.origin === location.origin;
+        let maybeApi = url.pathname.startsWith("/api/");
 
         // Only handle same-origin API requests
         if (!sameOrigin || !maybeApi) return;

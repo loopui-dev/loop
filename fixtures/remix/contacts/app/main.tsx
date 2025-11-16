@@ -6,8 +6,8 @@ import { handlers, routes } from "./routes.tsx";
 
 import "./index.css";
 
-const script = import.meta.env.DEV ? "/entry.worker.ts" : "/entry.worker.js";
-const registry = new WorkerRegistry(script);
+let script = import.meta.env.DEV ? "/entry.worker.ts" : "/entry.worker.js";
+let registry = new WorkerRegistry(script);
 
 on(registry, {
     registered() {

@@ -49,27 +49,27 @@ export class Router<Renderable = unknown>
     ready: Promise<boolean> = todo();
 
     // Navigation API methods mirrored from window.navigation
-    navigate(url: string, options?: NavigationNavigateOptions): NavigationResult {
+    navigate(_url: string, _options?: NavigationNavigateOptions): NavigationResult {
         todo();
     }
 
-    reload(options?: NavigationReloadOptions): NavigationResult {
+    reload(_options?: NavigationReloadOptions): NavigationResult {
         todo();
     }
 
-    traverseTo(key: string, options?: NavigationOptions): NavigationResult {
+    traverseTo(_key: string, _options?: NavigationOptions): NavigationResult {
         todo();
     }
 
-    back(options?: NavigationOptions): NavigationResult {
+    back(_options?: NavigationOptions): NavigationResult {
         todo();
     }
 
-    forward(options?: NavigationOptions): NavigationResult {
+    forward(_options?: NavigationOptions): NavigationResult {
         todo();
     }
 
-    updateCurrentEntry(options: NavigationUpdateCurrentEntryOptions): void {
+    updateCurrentEntry(_options: NavigationUpdateCurrentEntryOptions): void {
         todo();
     }
 
@@ -83,7 +83,7 @@ export class Router<Renderable = unknown>
      * @param path - The path to check
      * @param exact - If true, requires exact match. Default is false (partial match)
      */
-    isActive(path: string | URL | Partial<Router.Path> | undefined, exact?: boolean): boolean {
+    isActive(_path: string | URL | Partial<Router.Path> | undefined, _exact?: boolean): boolean {
         todo();
     }
 
@@ -93,7 +93,7 @@ export class Router<Renderable = unknown>
      * @param path - The path to check
      * @param exact - If true, requires exact match. Default is false (partial match)
      */
-    isPending(path: string | URL | Partial<Router.Path> | undefined, exact?: boolean): boolean {
+    isPending(_path: string | URL | Partial<Router.Path> | undefined, _exact?: boolean): boolean {
         todo();
     }
 
@@ -107,7 +107,7 @@ export class Router<Renderable = unknown>
      *
      * @example
      * ```ts
-     * const className = router.when("/dashboard", {
+     * let className = router.when("/dashboard", {
      *   active: "text-blue-600 font-bold",
      *   pending: "text-gray-400 animate-pulse"
      * });
@@ -130,8 +130,8 @@ export class Router<Renderable = unknown>
         pending: boolean;
     };
     when<T, U>(
-        path: string | URL | Partial<Router.Path> | undefined,
-        options?: { active?: T; pending?: U },
+        _path: string | URL | Partial<Router.Path> | undefined,
+        _options?: { active?: T; pending?: U },
     ): { active: boolean; pending: boolean } | T | U | undefined {
         todo();
     }
@@ -141,7 +141,7 @@ export class Router<Renderable = unknown>
      * @param routes The route map
      * @param handlers The handlers that correspond to the routes
      */
-    map<Routes extends { __defs: unknown }>(routes: Routes, handlers: AppHandlers<Routes>): void {
+    map<Routes extends { __defs: unknown }>(_routes: Routes, _handlers: AppHandlers<Routes>): void {
         todo();
     }
 }
@@ -204,19 +204,19 @@ export namespace Router {
     export type Params = ReadonlyMap<string, string>;
 
     export class SearchParams extends URLSearchParams {
-        set(name: string, value: string, options?: NavigationNavigateOptions): void {
+        set(_name: string, _value: string, _options?: NavigationNavigateOptions): void {
             todo();
         }
-        append(name: string, value: string, options?: NavigationNavigateOptions): void {
+        append(_name: string, _value: string, _options?: NavigationNavigateOptions): void {
             todo();
         }
 
         delete(name: string, value?: string, options?: NavigationNavigateOptions): void;
         delete(name: string, options?: NavigationNavigateOptions): void;
         delete(
-            name: string,
-            valueOrOptions?: string | NavigationNavigateOptions,
-            options?: NavigationNavigateOptions,
+            _name: string,
+            _valueOrOptions?: string | NavigationNavigateOptions,
+            _options?: NavigationNavigateOptions,
         ): void {
             todo();
         }

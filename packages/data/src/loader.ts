@@ -23,36 +23,36 @@ export interface LoaderEventMap<Input extends unknown[] | object, Value>
 export class Loader<Input extends unknown[], Value> extends TypedEventTarget<
     LoaderEventMap<Input, Value>
 > {
-    constructor(fetcher: (...input: Input) => Promise<Value>) {
+    constructor(_fetcher: (...input: Input) => Promise<Value>) {
         super();
         todo();
     }
 
-    fetch<V = Value>(...input: InputWithoutAbortSignal<Input>): Promise<V> {
+    fetch<V = Value>(..._input: InputWithoutAbortSignal<Input>): Promise<V> {
         todo();
     }
 
     refetch(
-        ...input: InputWithoutAbortSignal<Input> | InputWithoutAbortSignal<Input>[]
+        ..._input: InputWithoutAbortSignal<Input> | InputWithoutAbortSignal<Input>[]
     ): Promise<void> {
         todo();
     }
 
-    get(...input: InputWithoutAbortSignal<Input>): DataState<Value> {
+    get(..._input: InputWithoutAbortSignal<Input>): DataState<Value> {
         todo();
     }
 
     filter(
-        predicate: (input: InputWithoutAbortSignal<Input>) => boolean,
+        _predicate: (input: InputWithoutAbortSignal<Input>) => boolean,
     ): Omit<Loader<[], Value>, "fetch" | "refetch" | "get"> & { get(): DataState<Value>[] } {
         todo();
     }
 
-    invalidate(...input: InputWithoutAbortSignal<Input> | InputWithoutAbortSignal<Input>[]): void {
+    invalidate(..._input: InputWithoutAbortSignal<Input> | InputWithoutAbortSignal<Input>[]): void {
         todo();
     }
 
-    evict(...input: InputWithoutAbortSignal<Input> | InputWithoutAbortSignal<Input>[]): void {
+    evict(..._input: InputWithoutAbortSignal<Input> | InputWithoutAbortSignal<Input>[]): void {
         todo();
     }
 }

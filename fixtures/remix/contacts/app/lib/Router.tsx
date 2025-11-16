@@ -7,7 +7,7 @@ export function Router<Routes extends { __defs: unknown }>(
     this: Remix.Handle<Router.Handle>,
     { routes, children, fallback }: Router.Props<Routes>,
 ) {
-    const handle = new Router.Handle();
+    let handle = new Router.Handle();
     handle.map(routes, children);
 
     let outlet = handle.outlet;

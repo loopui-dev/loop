@@ -8,13 +8,13 @@ import { routes } from "~/routes.tsx";
 import type { ContactRecord } from "~/worker/contacts.ts";
 
 export function Sidebar(this: Remix.Handle) {
-    const router = this.context.get(Router);
+    let router = this.context.get(Router);
     on(router, this.signal, { navigatesuccess: () => this.update() });
     on(client.contact.list, this.signal, { statechange: () => this.update() });
 
     return () => {
-        const { query } = this.context.get(Root);
-        const { value: contacts } = client.contact.list.get({
+        let { query } = this.context.get(Root);
+        let { value: contacts } = client.contact.list.get({
             searchParams: { q: query },
         });
         assert(contacts, "contacts not preloaded");
@@ -38,14 +38,14 @@ export function Sidebar(this: Remix.Handle) {
 }
 
 function SidebarItem(this: Remix.Handle) {
-    const router = this.context.get(Router);
+    let router = this.context.get(Router);
     on(router, this.signal, {
         navigate: () => this.update(),
         navigatesuccess: () => this.update(),
     });
 
     return ({ contact }: { contact: ContactRecord }) => {
-        const link =
+        let link =
             routes.contact.show.href({
                 contactId: String(contact.id),
             }) + router.url.search;

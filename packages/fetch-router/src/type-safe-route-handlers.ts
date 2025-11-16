@@ -71,7 +71,7 @@ export namespace HrefParams {
 
     // Route helper with href method
     interface RouteHelper<Params extends Record<string, string> = {}> {
-        href(params?: Params extends Record<string, never> ? void : Params): string;
+        href(params?: Params extends Record<string, never> ? undefined : Params): string;
     }
 }
 

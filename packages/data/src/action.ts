@@ -33,26 +33,26 @@ export class FormAction {
 export class Action<Input extends unknown[], Value = void> extends TypedEventTarget<
     ActionEventMap<Input, Value>
 > {
-    constructor(mutation: (...input: Input) => Promise<Value>) {
+    constructor(_mutation: (...input: Input) => Promise<Value>) {
         super();
         todo();
     }
 
-    get(...input: InputWithoutAbortSignal<Input>): DataState<Value> {
+    get(..._input: InputWithoutAbortSignal<Input>): DataState<Value> {
         todo();
     }
 
     filter(
-        predicate: (input: InputWithoutAbortSignal<Input>) => boolean,
+        _predicate: (input: InputWithoutAbortSignal<Input>) => boolean,
     ): Omit<Action<[], Value>, "mutate" | "form" | "get"> & { get(): DataState<Value>[] } {
         todo();
     }
 
-    mutate(...input: InputWithoutAbortSignal<Input>): Promise<Value> {
+    mutate(..._input: InputWithoutAbortSignal<Input>): Promise<Value> {
         todo();
     }
 
-    form(...input: InputWithoutFormData<InputWithoutAbortSignal<Input>>): FormAction {
+    form(..._input: InputWithoutFormData<InputWithoutAbortSignal<Input>>): FormAction {
         todo();
     }
 }

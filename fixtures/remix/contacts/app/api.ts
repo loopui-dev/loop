@@ -1,6 +1,6 @@
 import { createResources, createRoutes } from "@remix-run/fetch-router";
 
-export const api = createRoutes("/api", {
+export let api = createRoutes("/api", {
     contact: {
         list: { method: "GET", pattern: "/contact?q" },
         ...createResources("/contact", {

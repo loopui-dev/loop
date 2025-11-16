@@ -6,7 +6,7 @@ import { Index } from "./routes/index.tsx";
 import { Root } from "./routes/root.tsx";
 import { ShowContact } from "./routes/show-contact.tsx";
 
-export const routes = createRoutes({
+export let routes = createRoutes({
     root: {
         pattern: "/?q",
         children: {
@@ -19,7 +19,7 @@ export const routes = createRoutes({
     },
 });
 
-export const handlers = {
+export let handlers = {
     root: {
         preload: async ({ searchParams }) => {
             await client.contact.list.fetch({ searchParams });

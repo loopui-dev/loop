@@ -3,7 +3,7 @@ import { on } from "@remix-run/interaction";
 import { Router } from "~/lib/Router.tsx";
 
 export function Details(this: Remix.Handle) {
-    const router = this.context.get(Router);
+    let router = this.context.get(Router);
     on(router, this.signal, {
         navigate: () => this.update(),
         navigatesuccess: () => this.update(),

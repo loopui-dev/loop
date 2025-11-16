@@ -10,21 +10,21 @@ import type { ShowContact } from "./show-contact.tsx";
 export function EditContact(this: Remix.Handle, initialProps: ShowContact.Props) {
     let id = initialProps.id;
 
-    const router = this.context.get(Router);
+    let router = this.context.get(Router);
     on(router, this.signal, { navigatesuccess: () => this.update() });
 
-    const show = client.contact.show.filter(([{ params }]) => params.contactId === id);
+    let show = client.contact.show.filter(([{ params }]) => params.contactId === id);
     on(show, this.signal, { statechange: () => this.update() });
 
     return (props: ShowContact.Props) => {
         id = props.id;
 
-        const {
+        let {
             on: { submit },
             ...action
         } = client.contact.update.form({ contactId: id });
 
-        const { value: contact } = client.contact.show.get({ params: { contactId: id } });
+        let { value: contact } = client.contact.show.get({ params: { contactId: id } });
         assert(contact, "contact not preloaded");
 
         return (

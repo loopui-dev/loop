@@ -60,7 +60,7 @@ type FlattenRoot<Defs> = Defs extends { root: infer Root }
       : {};
 
 export function createRoutes<const Defs extends RouteDefs>(
-    defs: Defs,
+    _defs: Defs,
 ): FlattenRoot<Defs> & { __defs: Defs } {
     todo();
 }

@@ -16,13 +16,13 @@ export namespace ShowContact {
 export function ShowContact(this: Remix.Handle, initialProps: ShowContact.Props) {
     let id = initialProps.id;
 
-    const router = this.context.get(Router);
+    let router = this.context.get(Router);
     on(router, this.signal, { navigatesuccess: () => this.update() });
 
-    const show = client.contact.show.filter(([{ params }]) => params.contactId === id);
+    let show = client.contact.show.filter(([{ params }]) => params.contactId === id);
     on(show, this.signal, { statechange: () => this.update() });
 
-    const destroy = client.contact.destroy.filter(([params]) => params.contactId === id);
+    let destroy = client.contact.destroy.filter(([params]) => params.contactId === id);
     on(destroy, this.signal, {
         submit(event) {
             if (!confirm("Please confirm you want to delete this record.")) {
@@ -34,14 +34,14 @@ export function ShowContact(this: Remix.Handle, initialProps: ShowContact.Props)
     return (props: ShowContact.Props) => {
         id = props.id;
 
-        const {
+        let {
             on: { submit },
             ...action
         } = client.contact.destroy.form({
             contactId: id,
         });
 
-        const { value: contact } = client.contact.show.get({ params: { contactId: id } });
+        let { value: contact } = client.contact.show.get({ params: { contactId: id } });
         assert(contact, "contact not preloaded");
 
         return (

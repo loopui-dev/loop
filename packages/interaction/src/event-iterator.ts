@@ -101,46 +101,46 @@ async function* streamFor<Target extends EventTarget, K extends EventType<Target
     options: AddEventListenerOptions = {},
     externalSignal?: AbortSignal,
 ): AsyncIterable<EnsureEvent<EventMap<Target>[K], Target>> {
-    const queue: Event[] = [];
+    let queue: Event[] = [];
     let notify: (() => void) | null = null;
     let aborted = false;
-    const { signal, ...listenerOptions } = options;
+    let { signal, ...listenerOptions } = options;
 
     // Combine both signals if both are provided
-    const signals = [signal, externalSignal].filter(Boolean) as AbortSignal[];
+    let signals = [signal, externalSignal].filter(Boolean) as AbortSignal[];
 
-    const listener = (ev: Event, _signal?: AbortSignal) => {
+    let listener = (ev: Event, _signal?: AbortSignal) => {
         // Check if aborted before queueing
         if (aborted) return;
         queue.push(ev);
         if (notify) {
-            const n = notify;
+            let n = notify;
             notify = null;
             n();
         }
     };
 
-    const onAbort = (_event?: Event, _signal?: AbortSignal) => {
+    let onAbort = (_event?: Event, _signal?: AbortSignal) => {
         aborted = true;
         // wake the consumer so it can exit
         if (notify) {
-            const n = notify;
+            let n = notify;
             notify = null;
             n();
         }
     };
 
-    const cleanups: (() => void)[] = [];
+    let cleanups: (() => void)[] = [];
 
     // Listen to all signals
-    for (const _signal of signals) {
+    for (let _signal of signals) {
         if (_signal.aborted) {
             // Already aborted, exit immediately
             aborted = true;
             return;
         }
 
-        const container = createContainer(_signal);
+        let container = createContainer(_signal);
         container.set({
             abort: onAbort,
         });
@@ -148,8 +148,8 @@ async function* streamFor<Target extends EventTarget, K extends EventType<Target
     }
 
     // Attach with all provided options
-    const container = createContainer(target);
-    const wrappedListener =
+    let container = createContainer(target);
+    let wrappedListener =
         Object.keys(listenerOptions).length > 0
             ? listenWith(listenerOptions, listener as any)
             : (listener as any);
@@ -160,7 +160,7 @@ async function* streamFor<Target extends EventTarget, K extends EventType<Target
 
     try {
         // If caller asked for once, we'll end the generator after the first yield
-        const endAfterOne = !!options.once;
+        let endAfterOne = !!options.once;
 
         while (!aborted) {
             if (queue.length === 0) {
@@ -169,12 +169,12 @@ async function* streamFor<Target extends EventTarget, K extends EventType<Target
             }
             // Check signal before emitting
             if (aborted) break;
-            const ev = queue.shift()!;
+            let ev = queue.shift()!;
             yield ev as any;
             if (endAfterOne) break;
         }
     } finally {
-        for (const clean of cleanups) {
+        for (let clean of cleanups) {
             clean();
         }
     }
@@ -187,7 +187,7 @@ function makeStream<Target extends EventTarget, K extends EventType<Target>>(
     externalSignal?: AbortSignal,
 ): Stream<EnsureEvent<EventMap<Target>[K], Target>> {
     // callable part: options -> AsyncIterable
-    const fn = (options?: AddEventListenerOptions) =>
+    let fn = (options?: AddEventListenerOptions) =>
         streamFor<Target, K>(target, type, options, externalSignal);
 
     // iterable part: for-await without options
@@ -254,19 +254,19 @@ export function on(
 
     if (isSignal && listeners) {
         // on(target, signal, listeners)
-        const container = createContainer(target, listenersOrSignal);
+        let container = createContainer(target, listenersOrSignal);
         container.set(listeners);
         return container.dispose;
     }
 
     if (!isSignal && listenersOrSignal) {
         // on(target, listeners)
-        const container = createContainer(target);
+        let container = createContainer(target);
         container.set(listenersOrSignal as EventListeners<any>);
         return container.dispose;
     }
 
     // on(target) or on(target, signal) - return EventStreams
-    const signal = isSignal ? listenersOrSignal : undefined;
+    let signal = isSignal ? listenersOrSignal : undefined;
     return createEventStreams(target, signal);
 }

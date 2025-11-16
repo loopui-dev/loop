@@ -26,7 +26,7 @@ export type ContactRecord = ContactMutation & {
 ////////////////////////////////////////////////////////////////////////////////
 // This is just a fake DB table. In a real app you'd be talking to a real db or
 // fetching from an existing API.
-const fakeContacts = {
+let fakeContacts = {
     records: {} as Record<string, ContactRecord>,
 
     async getAll(): Promise<ContactRecord[]> {
@@ -40,17 +40,17 @@ const fakeContacts = {
     },
 
     async create(values: ContactMutation): Promise<ContactRecord> {
-        const id = values.id || Math.random().toString(36).substring(2, 9);
-        const createdAt = new Date().toISOString();
-        const newContact = { id, createdAt, ...values };
+        let id = values.id || Math.random().toString(36).substring(2, 9);
+        let createdAt = new Date().toISOString();
+        let newContact = { id, createdAt, ...values };
         fakeContacts.records[id] = newContact;
         return newContact;
     },
 
     async set(id: string, values: ContactMutation): Promise<ContactRecord> {
-        const contact = await fakeContacts.get(id);
+        let contact = await fakeContacts.get(id);
         assert(contact, `No contact found for ${id}`);
-        const updatedContact = { ...contact, ...values };
+        let updatedContact = { ...contact, ...values };
         fakeContacts.records[id] = updatedContact;
         return updatedContact;
     },
@@ -76,7 +76,7 @@ export async function getContacts(query?: string | null) {
 
 export async function createEmptyContact() {
     await fakeNetwork();
-    const contact = await fakeContacts.create({});
+    let contact = await fakeContacts.create({});
     return contact;
 }
 
@@ -87,7 +87,7 @@ export async function getContact(id: string) {
 
 export async function updateContact(id: string, updates: ContactMutation) {
     await fakeNetwork();
-    const contact = await fakeContacts.get(id);
+    let contact = await fakeContacts.get(id);
     if (!contact) {
         throw new Error(`No contact found for ${id}`);
     }
@@ -98,7 +98,7 @@ export async function deleteContact(id: string) {
     fakeContacts.destroy(id);
 }
 
-const seeds = [
+let seeds = [
     {
         avatar: "https://sessionize.com/image/124e-400o400o2-wHVdAuNaxi8KJrgtN3ZKci.jpg",
         first: "Shruti",
@@ -283,9 +283,9 @@ const seeds = [
 ];
 
 function seedContacts() {
-    for (const contact of seeds) {
+    for (let contact of seeds) {
         // Create a slug-friendly ID by removing special chars and replacing spaces with dashes
-        const slugify = (text: string) =>
+        let slugify = (text: string) =>
             text
                 .toLowerCase()
                 .replace(/[^\w\s-]/g, "") // Remove special characters except spaces and dashes
@@ -302,7 +302,7 @@ function seedContacts() {
 seedContacts();
 
 // fake a cache so we don't slow down stuff we've already seen
-const fakeCache = new Map<string, boolean>();
+let fakeCache = new Map<string, boolean>();
 
 export async function fakeNetwork(key?: string): Promise<void> {
     if (!key || !fakeCache.get(key)) {

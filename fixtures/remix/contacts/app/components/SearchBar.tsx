@@ -6,15 +6,15 @@ import { Root } from "~/routes/root.tsx";
 import { routes } from "~/routes.tsx";
 
 export function SearchBar(this: Remix.Handle) {
-    const router = this.context.get(Router);
+    let router = this.context.get(Router);
     on(router, this.signal, {
         navigate: () => this.update(),
         navigatesuccess: () => this.update(),
     });
 
     return () => {
-        const { query } = this.context.get(Root);
-        const searching = router.navigating.to.url?.searchParams.has("q");
+        let { query } = this.context.get(Root);
+        let searching = router.navigating.to.url?.searchParams.has("q");
 
         return (
             <form action={routes.index.href()} id="search-form" method="get">
