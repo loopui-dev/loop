@@ -4,9 +4,9 @@
     "private": true,
     "dependencies": {
         "@loopui/data": "workspace:*",
-        "@loopui/dom-router": "workspace:*",
         "@loopui/fetch-router": "workspace:*",
         "@loopui/interaction": "workspace:*",
+        "@loopui/navigator": "workspace:*",
         "@loopui/worker": "workspace:*",
         "@remix-run/dom": "catalog:remix",
         "@remix-run/events": "catalog:remix",

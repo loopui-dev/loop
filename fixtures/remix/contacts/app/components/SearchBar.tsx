@@ -6,15 +6,12 @@ import { Root } from "~/routes/root.tsx";
 import { routes } from "~/routes.tsx";
 
 export function SearchBar(this: Remix.Handle) {
-    let router = this.context.get(Router);
-    on(router, this.signal, {
-        navigate: () => this.update(),
-        navigatesuccess: () => this.update(),
-    });
+    let navigator = this.context.get(Router);
+    on(navigator, this.signal, { statechange: () => this.update() });
 
     return () => {
         let { query } = this.context.get(Root);
-        let searching = router.navigating.to.url?.searchParams.has("q");
+        let searching = navigator.navigating.to.url?.searchParams.has("q");
 
         return (
             <form action={routes.index.href()} id="search-form" method="get">
@@ -26,11 +23,11 @@ export function SearchBar(this: Remix.Handle) {
                     name="q"
                     on={dom.input(event => {
                         if (event.currentTarget.value) {
-                            router.searchParams.set("q", event.currentTarget.value, {
+                            navigator.searchParams.set("q", event.currentTarget.value, {
                                 history: query !== undefined ? "replace" : "auto",
                             });
                         } else {
-                            router.searchParams.delete("q");
+                            navigator.searchParams.delete("q");
                         }
                     })}
                     placeholder="Search"

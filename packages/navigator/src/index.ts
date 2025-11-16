@@ -3,5 +3,5 @@ export function todo(): never {
 }
 
 export * from "./handlers.ts";
-export * from "./router.ts";
+export * from "./navigator.ts";
 export * from "./routes.ts";

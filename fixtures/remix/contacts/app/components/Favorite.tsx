@@ -12,12 +12,11 @@ export namespace Favorite {
 
 export function Favorite(this: Remix.Handle, initialProps: Favorite.Props) {
     let id = initialProps.id;
-    let favorite = initialProps.favorite;
     let optimistic: boolean | undefined;
 
-    let fave = client.contact.favorite.filter(([params]) => params.contactId === id);
+    let favorite = client.contact.favorite.filter(([params]) => params.contactId === id);
 
-    on(fave, this.signal, {
+    on(favorite, this.signal, {
         submit: ({ formData }) => {
             optimistic = formData.get("favorite") === "true";
             this.update();
@@ -30,14 +29,13 @@ export function Favorite(this: Remix.Handle, initialProps: Favorite.Props) {
 
     return (props: Favorite.Props) => {
         id = props.id;
-        favorite = props.favorite;
 
         let {
             on: { submit },
             ...action
         } = client.contact.favorite.form({ contactId: id });
 
-        let effective = optimistic ?? favorite;
+        let effective = optimistic ?? props.favorite;
 
         return (
             <form {...action} on={dom.submit(submit)}>

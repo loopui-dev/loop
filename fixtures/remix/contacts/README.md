@@ -1,6 +1,6 @@
 # Contacts Example
 
-A Remix 3 contacts manager showcasing [@loopui/data](../../../packages/data) and [@loopui/dom-router](../../../packages/dom-router) features. It adapts the [React Router address book tutorial](https://reactrouter.com/tutorials/address-book) to run entirely on the client while reusing the same patterns.
+A Remix 3 contacts manager showcasing [@loopui/data](../../../packages/data) and [@loopui/navigator](../../../packages/navigator) features. It adapts the [React Router address book tutorial](https://reactrouter.com/tutorials/address-book) to run entirely on the client while reusing the same patterns.
 
 ## Getting Started
 

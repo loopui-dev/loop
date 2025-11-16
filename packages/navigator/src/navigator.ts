@@ -14,8 +14,8 @@ type DOMNavigation = Omit<
 >;
 type DOMErrorEvent = ErrorEvent;
 
-export class Router<Renderable = unknown>
-    extends TypedEventTarget<Router.EventMap<Renderable>>
+export class Navigator<Renderable = unknown>
+    extends TypedEventTarget<Navigator.EventMap<Renderable>>
     implements DOMNavigation
 {
     // Navigation API properties mirrored from window.navigation
@@ -34,7 +34,7 @@ export class Router<Renderable = unknown>
      * Current navigation status, including the route being left and the route being entered.
      * This is useful for rendering loading indicators or optimistic UI.
      */
-    navigating: Router.Navigating = todo();
+    navigating: Navigator.Navigating = todo();
 
     /**
      * The latest rendered node returned by the matched route handler.
@@ -42,9 +42,9 @@ export class Router<Renderable = unknown>
      */
     outlet: Renderable | null = todo();
 
-    params: Router.Params = todo();
+    params: Navigator.Params = todo();
 
-    searchParams: Router.SearchParams = todo();
+    searchParams: Navigator.SearchParams = todo();
 
     ready: Promise<boolean> = todo();
 
@@ -83,7 +83,7 @@ export class Router<Renderable = unknown>
      * @param path - The path to check
      * @param exact - If true, requires exact match. Default is false (partial match)
      */
-    isActive(_path: string | URL | Partial<Router.Path> | undefined, _exact?: boolean): boolean {
+    isActive(_path: string | URL | Partial<Navigator.Path> | undefined, _exact?: boolean): boolean {
         todo();
     }
 
@@ -93,7 +93,10 @@ export class Router<Renderable = unknown>
      * @param path - The path to check
      * @param exact - If true, requires exact match. Default is false (partial match)
      */
-    isPending(_path: string | URL | Partial<Router.Path> | undefined, _exact?: boolean): boolean {
+    isPending(
+        _path: string | URL | Partial<Navigator.Path> | undefined,
+        _exact?: boolean,
+    ): boolean {
         todo();
     }
 
@@ -114,23 +117,23 @@ export class Router<Renderable = unknown>
      * ```
      */
     when<T>(
-        path: string | URL | Partial<Router.Path> | undefined,
+        path: string | URL | Partial<Navigator.Path> | undefined,
         options: { active: T; pending?: undefined },
     ): T | undefined;
     when<U>(
-        path: string | URL | Partial<Router.Path> | undefined,
+        path: string | URL | Partial<Navigator.Path> | undefined,
         options: { active?: undefined; pending: U },
     ): U | undefined;
     when<T, U>(
-        path: string | URL | Partial<Router.Path> | undefined,
+        path: string | URL | Partial<Navigator.Path> | undefined,
         options: { active: T; pending: U },
     ): T | U | undefined;
-    when(path: string | URL | Partial<Router.Path> | undefined): {
+    when(path: string | URL | Partial<Navigator.Path> | undefined): {
         active: boolean;
         pending: boolean;
     };
     when<T, U>(
-        _path: string | URL | Partial<Router.Path> | undefined,
+        _path: string | URL | Partial<Navigator.Path> | undefined,
         _options?: { active?: T; pending?: U },
     ): { active: boolean; pending: boolean } | T | U | undefined {
         todo();
@@ -146,7 +149,7 @@ export class Router<Renderable = unknown>
     }
 }
 
-export namespace Router {
+export namespace Navigator {
     export interface NavigateEvent extends NavigationNavigateEvent {}
     export interface SuccessEvent extends Event {}
     export interface ErrorEvent extends DOMErrorEvent {}
@@ -157,10 +160,11 @@ export namespace Router {
     }
 
     export interface EventMap<Renderable = unknown> extends NavigationEventMap {
-        navigate: Router.NavigateEvent;
-        navigatesuccess: Router.SuccessEvent;
-        navigateerror: Router.ErrorEvent;
-        currententrychange: Router.CurrentEntryChangeEvent<Renderable>;
+        navigate: Navigator.NavigateEvent;
+        navigatesuccess: Navigator.SuccessEvent;
+        navigateerror: Navigator.ErrorEvent;
+        currententrychange: Navigator.CurrentEntryChangeEvent<Renderable>;
+        statechange: Navigator;
     }
 
     /** Parsed representation of a URL used by the router helpers. */

@@ -8,8 +8,8 @@ import { routes } from "~/routes.tsx";
 import type { ContactRecord } from "~/worker/contacts.ts";
 
 export function Sidebar(this: Remix.Handle) {
-    let router = this.context.get(Router);
-    on(router, this.signal, { navigatesuccess: () => this.update() });
+    let navigator = this.context.get(Router);
+    on(navigator, this.signal, { navigatesuccess: () => this.update() });
     on(client.contact.list, this.signal, { statechange: () => this.update() });
 
     return () => {
@@ -38,21 +38,18 @@ export function Sidebar(this: Remix.Handle) {
 }
 
 function SidebarItem(this: Remix.Handle) {
-    let router = this.context.get(Router);
-    on(router, this.signal, {
-        navigate: () => this.update(),
-        navigatesuccess: () => this.update(),
-    });
+    let navigator = this.context.get(Router);
+    on(navigator, this.signal, { statechange: () => this.update() });
 
     return ({ contact }: { contact: ContactRecord }) => {
-        let link =
-            routes.contact.show.href({
-                contactId: String(contact.id),
-            }) + router.url.search;
+        let link = routes.contact.show.href({ contactId: contact.id }) + navigator.url.search;
 
         return (
             <li>
-                <a class={router.when(link, { active: "active", pending: "pending" })} href={link}>
+                <a
+                    class={navigator.when(link, { active: "active", pending: "pending" })}
+                    href={link}
+                >
                     {contact.first || contact.last ? (
                         <>
                             {contact.first} {contact.last}
