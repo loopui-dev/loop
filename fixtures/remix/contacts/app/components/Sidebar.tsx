@@ -43,13 +43,11 @@ function SidebarItem(this: Remix.Handle) {
 
     return ({ contact }: { contact: ContactRecord }) => {
         let link = routes.contact.show.href({ contactId: contact.id }) + navigator.url.search;
+        let className = navigator.when(link, { active: "active", pending: "pending" });
 
         return (
             <li>
-                <a
-                    class={navigator.when(link, { active: "active", pending: "pending" })}
-                    href={link}
-                >
+                <a class={className} href={link}>
                     {contact.first || contact.last ? (
                         <>
                             {contact.first} {contact.last}

@@ -116,15 +116,15 @@ export class Navigator<Renderable = unknown>
      * });
      * ```
      */
-    when<T>(
+    when<const T>(
         path: string | URL | Partial<Navigator.Path> | undefined,
         options: { active: T; pending?: undefined },
     ): T | undefined;
-    when<U>(
+    when<const U>(
         path: string | URL | Partial<Navigator.Path> | undefined,
         options: { active?: undefined; pending: U },
     ): U | undefined;
-    when<T, U>(
+    when<const T, const U>(
         path: string | URL | Partial<Navigator.Path> | undefined,
         options: { active: T; pending: U },
     ): T | U | undefined;
@@ -132,7 +132,7 @@ export class Navigator<Renderable = unknown>
         active: boolean;
         pending: boolean;
     };
-    when<T, U>(
+    when<const T, const U>(
         _path: string | URL | Partial<Navigator.Path> | undefined,
         _options?: { active?: T; pending?: U },
     ): { active: boolean; pending: boolean } | T | U | undefined {
