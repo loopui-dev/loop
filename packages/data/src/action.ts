@@ -1,5 +1,5 @@
-import type { ListenerFor } from "@loopui/interaction";
-import { TypedEventTarget } from "@loopui/interaction";
+import type { ListenerFor } from "@loopui/events";
+import { TypedEventTarget } from "@loopui/events";
 import { todo } from "./index.ts";
 import type {
     DataEventMap,

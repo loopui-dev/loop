@@ -1,4 +1,4 @@
-import { TypedEventTarget } from "@loopui/interaction";
+import { TypedEventTarget } from "@loopui/events";
 
 interface RegistryEventMap {
     registered: RegistryEvent;

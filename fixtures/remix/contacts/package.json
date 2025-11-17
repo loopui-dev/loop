@@ -4,7 +4,7 @@
     "private": true,
     "dependencies": {
         "@loopui/data": "workspace:*",
-        "@loopui/interaction": "workspace:*",
+        "@loopui/events": "workspace:*",
         "@loopui/navigator": "workspace:*",
         "@loopui/server": "workspace:*",
         "@loopui/worker": "workspace:*",

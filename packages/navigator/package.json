@@ -28,7 +28,7 @@
         "LICENSE"
     ],
     "dependencies": {
-        "@loopui/interaction": "workspace:*",
+        "@loopui/events": "workspace:*",
         "@loopui/server": "workspace:*"
     },
     "devDependencies": {

@@ -7,7 +7,6 @@ run = "tsdown --watch"
 
 [tasks.build]
 description = "Build the library"
-sources = ["../../pnpm-lock.yaml", "tsdown.config.ts", "tsconfig.json", "src/**/*.ts"]
 outputs = ["dist"]
 run = "tsdown"
 

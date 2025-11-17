@@ -28,7 +28,7 @@
         "LICENSE"
     ],
     "dependencies": {
-        "@loopui/interaction": "workspace:*"
+        "@loopui/events": "workspace:*"
     },
     "devDependencies": {
         "@biomejs/biome": "catalog:dev",

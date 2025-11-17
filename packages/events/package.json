@@ -1,13 +1,13 @@
 {
-    "name": "@loopui/interaction",
+    "name": "@loopui/events",
     "version": "0.1.0",
     "type": "module",
     "repository": {
         "type": "git",
         "url": "https://github.com/loopui/loop.git",
-        "directory": "packages/interaction"
+        "directory": "packages/events"
     },
-    "homepage": "https://github.com/loopui/loop/tree/main/packages/interaction#readme",
+    "homepage": "https://github.com/loopui/loop/tree/main/packages/events#readme",
     "bugs": {
         "url": "https://github.com/loopui/loop/issues"
     },

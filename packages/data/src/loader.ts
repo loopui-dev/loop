@@ -1,4 +1,4 @@
-import { TypedEventTarget } from "@loopui/interaction";
+import { TypedEventTarget } from "@loopui/events";
 import { todo } from "./index.ts";
 import type { DataEventMap, DataState, InputWithoutAbortSignal, NormalizeInput } from "./types.ts";
 

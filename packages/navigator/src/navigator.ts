@@ -1,4 +1,4 @@
-import { TypedEventTarget } from "@loopui/interaction";
+import { TypedEventTarget } from "@loopui/events";
 import type { AppHandlers } from "./handlers.ts";
 import { todo } from "./index.ts";
 
@@ -18,6 +18,9 @@ export class Navigator<Renderable = unknown>
     extends TypedEventTarget<Navigator.EventMap<Renderable>>
     implements DOMNavigation
 {
+    dispatchEvent(event: Event): boolean {
+        throw new Error("Method not implemented.");
+    }
     // Navigation API properties mirrored from window.navigation
     currentEntry: NavigationHistoryEntry | null = todo();
     transition: NavigationTransition | null = todo();
