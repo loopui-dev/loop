@@ -10,8 +10,8 @@ import type { ShowContact } from "./show-contact.tsx";
 export function EditContact(this: Remix.Handle, initialProps: ShowContact.Props) {
     let id = initialProps.id;
 
-    let router = this.context.get(Router);
-    on(router, this.signal, { navigatesuccess: () => this.update() });
+    let navigator = this.context.get(Router);
+    on(navigator, this.signal, { navigatesuccess: () => this.update() });
 
     let show = client.contact.show.filter(([{ params }]) => params.contactId === id);
     on(show, this.signal, { statechange: () => this.update() });
@@ -71,7 +71,7 @@ export function EditContact(this: Remix.Handle, initialProps: ShowContact.Props)
                 </label>
                 <p>
                     <button type="submit">Save</button>
-                    <button on={press(() => router.back())} type="button">
+                    <button on={press(() => navigator.back())} type="button">
                         Cancel
                     </button>
                 </p>

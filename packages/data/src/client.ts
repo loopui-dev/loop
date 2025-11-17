@@ -1,9 +1,4 @@
-import type {
-    HrefParams,
-    HrefSearchParams,
-    RequiredParams,
-    TypedResponse,
-} from "@loopui/fetch-router";
+import type { HrefParams, HrefSearchParams, RequiredParams, TypedResponse } from "@loopui/server";
 import type { RequestMethod, Route } from "@remix-run/fetch-router";
 import type { Action } from "./action.ts";
 import { todo } from "./index.ts";

@@ -28,8 +28,8 @@
         "LICENSE"
     ],
     "dependencies": {
-        "@loopui/fetch-router": "workspace:*",
-        "@loopui/interaction": "workspace:*"
+        "@loopui/interaction": "workspace:*",
+        "@loopui/server": "workspace:*"
     },
     "devDependencies": {
         "@biomejs/biome": "catalog:dev",

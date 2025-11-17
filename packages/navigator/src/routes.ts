@@ -1,4 +1,4 @@
-import type { HrefParams, HrefSearchParams } from "@loopui/fetch-router";
+import type { HrefParams, HrefSearchParams } from "@loopui/server";
 import type { RoutePattern } from "@remix-run/route-pattern";
 import { todo } from "./index.ts";
 

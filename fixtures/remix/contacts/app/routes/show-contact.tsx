@@ -16,8 +16,8 @@ export namespace ShowContact {
 export function ShowContact(this: Remix.Handle, initialProps: ShowContact.Props) {
     let id = initialProps.id;
 
-    let router = this.context.get(Router);
-    on(router, this.signal, { navigatesuccess: () => this.update() });
+    let navigator = this.context.get(Router);
+    on(navigator, this.signal, { navigatesuccess: () => this.update() });
 
     let show = client.contact.show.filter(([{ params }]) => params.contactId === id);
     on(show, this.signal, { statechange: () => this.update() });

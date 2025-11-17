@@ -1,4 +1,4 @@
-import { json, type RouteHandlers } from "@loopui/fetch-router";
+import { json, type RouteHandlers } from "@loopui/server";
 import { redirect } from "@remix-run/fetch-router/response-helpers";
 import type { api } from "~/api.ts";
 import { routes } from "~/routes.tsx";

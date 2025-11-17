@@ -36,7 +36,7 @@ export function Router<Routes extends { __defs: unknown }>(
     this.context.set(navigator);
 
     return () => {
-        if (loading) return fallback;
+        if (loading || !outlet) return fallback;
         return outlet;
     };
 }
