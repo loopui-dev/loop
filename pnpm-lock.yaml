@@ -18,7 +18,7 @@ catalogs:
       version: 2.3.5
     '@typescript/native-preview':
       specifier: latest
-      version: 7.0.0-dev.20251117.1
+      version: 7.0.0-dev.20251118.1
     tsdown:
       specifier: ^0.15.7
       version: 0.15.12
@@ -47,7 +47,7 @@ catalogs:
       version: 0.8.0
     '@remix-run/interaction':
       specifier: latest
-      version: 0.1.0
+      version: 0.2.1
     '@remix-run/route-pattern':
       specifier: ^0.14.0
       version: 0.14.0
@@ -124,7 +124,7 @@ importers:
         version: 1.0.6
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251117.1
+        version: 7.0.0-dev.20251118.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -136,7 +136,65 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251117.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251118.1)(ms@2.1.3)
+      vite:
+        specifier: npm:rolldown-vite@latest
+        version: rolldown-vite@7.2.5(jiti@2.6.1)
+
+  fixtures/remix/contacts-frames:
+    dependencies:
+      '@loopui/events':
+        specifier: workspace:*
+        version: link:../../../packages/events
+      '@remix-run/dom':
+        specifier: catalog:remix
+        version: 0.0.0-experimental-remix-jam.6
+      '@remix-run/events':
+        specifier: catalog:remix
+        version: 0.0.0-experimental-remix-jam.5
+      '@remix-run/fetch-router':
+        specifier: catalog:remix
+        version: 0.8.0(@remix-run/form-data-parser@0.12.0)(@remix-run/headers@0.14.0)(@remix-run/html-template@0.2.0)(@remix-run/route-pattern@0.14.0)
+      '@remix-run/interaction':
+        specifier: catalog:remix
+        version: 0.2.1
+      '@remix-run/style':
+        specifier: catalog:remix
+        version: 0.0.0-experimental-remix-jam.5
+      '@std/assert':
+        specifier: catalog:std
+        version: '@jsr/std__assert@1.0.15'
+      '@std/async':
+        specifier: catalog:std
+        version: '@jsr/std__async@1.0.15'
+      match-sorter:
+        specifier: 'catalog:'
+        version: 8.1.0
+      sort-by:
+        specifier: 'catalog:'
+        version: 1.2.0
+    devDependencies:
+      '@biomejs/biome':
+        specifier: catalog:dev
+        version: 2.3.5
+      '@prettier/plugin-oxc':
+        specifier: catalog:prettier
+        version: 0.0.4
+      '@types/dom-navigation':
+        specifier: catalog:types
+        version: 1.0.6
+      '@typescript/native-preview':
+        specifier: catalog:dev
+        version: 7.0.0-dev.20251118.1
+      prettier:
+        specifier: catalog:prettier
+        version: 3.6.2
+      prettier-plugin-pkg:
+        specifier: catalog:prettier
+        version: 0.21.2(prettier@3.6.2)
+      prettier-plugin-toml:
+        specifier: catalog:prettier
+        version: 2.0.6(prettier@3.6.2)
       vite:
         specifier: npm:rolldown-vite@latest
         version: rolldown-vite@7.2.5(jiti@2.6.1)
@@ -158,7 +216,7 @@ importers:
         version: 0.0.4
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251117.1
+        version: 7.0.0-dev.20251118.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -170,13 +228,13 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251117.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251118.1)(ms@2.1.3)
 
   packages/events:
     dependencies:
       '@remix-run/interaction':
         specifier: catalog:remix
-        version: 0.1.0
+        version: 0.2.1
     devDependencies:
       '@biomejs/biome':
         specifier: catalog:dev
@@ -186,7 +244,7 @@ importers:
         version: 0.0.4
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251117.1
+        version: 7.0.0-dev.20251118.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -198,7 +256,7 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251117.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251118.1)(ms@2.1.3)
 
   packages/navigator:
     dependencies:
@@ -220,7 +278,7 @@ importers:
         version: 1.0.6
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251117.1
+        version: 7.0.0-dev.20251118.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -232,7 +290,7 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251117.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251118.1)(ms@2.1.3)
 
   packages/server:
     dependencies:
@@ -251,7 +309,7 @@ importers:
         version: 0.0.4
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251117.1
+        version: 7.0.0-dev.20251118.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -263,7 +321,7 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251117.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251118.1)(ms@2.1.3)
 
   packages/worker:
     dependencies:
@@ -279,7 +337,7 @@ importers:
         version: 0.0.4
       '@typescript/native-preview':
         specifier: catalog:dev
-        version: 7.0.0-dev.20251117.1
+        version: 7.0.0-dev.20251118.1
       prettier:
         specifier: catalog:prettier
         version: 3.6.2
@@ -291,7 +349,7 @@ importers:
         version: 2.0.6(prettier@3.6.2)
       tsdown:
         specifier: catalog:dev
-        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251117.1)(ms@2.1.3)
+        version: 0.15.12(@typescript/native-preview@7.0.0-dev.20251118.1)(ms@2.1.3)
 
 packages:
 
@@ -542,8 +600,8 @@ packages:
   '@remix-run/html-template@0.2.0':
     resolution: {integrity: sha512-CwmFgbUroD2082lK6ALHCryqOxrn3FtMf7uf554fN8Zq5H9aDafPYWpEZ01GvpaKuPVlWwyojhqcs1nOOgLwpA==}
 
-  '@remix-run/interaction@0.1.0':
-    resolution: {integrity: sha512-5AoVEKPad9+ss/HqjaDEKNjG1uFp9FFdHaaCtxLz5Yw0+xdiJF+ur7r6D1TAUFIVNZToD1WyHurVRD3sjUZBbw==}
+  '@remix-run/interaction@0.2.1':
+    resolution: {integrity: sha512-i/vFWIqLhEkMz5YDMsaolSfwpUtNgynO/ueYqf692G5Jva547jfq/Q5SvV//Yd8iTylH/mYuimfP9oCQ3+ep/Q==}
 
   '@remix-run/multipart-parser@0.12.0':
     resolution: {integrity: sha512-u/o4lKmIy/KuZGuQYMGhmr+BN7VKAt3G0ny8a1SBVlBXIBAtTOmDiI2WMZtyAv0VPbaIpT3OBTrRrKIfdDAE6w==}
@@ -738,43 +796,43 @@ packages:
   '@types/dom-navigation@1.0.6':
     resolution: {integrity: sha512-4srBpebg8rFDm0LafYuWhZMgLoSr5J4gx4q1uaTqOXwVk00y+CkTdJ4SC57sR1cMhP0ZRjApMRdHVcFYOvPGTw==}
 
-  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251117.1':
-    resolution: {integrity: sha512-O7Hhb9m8AZJCAUSBbGmZs7Vm890Kh5Z3xAAASs+L4thtPM0oRckeaoXLvHeE9Qy1p8qG//EmZ3+uSdtUTV4wqg==}
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251118.1':
+    resolution: {integrity: sha512-S3f/19naNfm4pYtDwSL3zVjnGVFsJUUvyYWCMyiSfH/pl3r946oT8EFRX5ZFqhmrRzsro/eOKKCkI6NW8LgKQA==}
     cpu: [arm64]
     os: [darwin]
 
-  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251117.1':
-    resolution: {integrity: sha512-/I/iWWvUvuy8BK0bXn5Kz6z2QwknwD2kl2estQxgsz9VgHHyLSyjAg7c18pX/re0Z9ISPz7wutEKabzdtRW8Uw==}
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251118.1':
+    resolution: {integrity: sha512-CN3womymw0PBkVxsJ0hwANFNfksi47sT76rZUYJihr5Ckp5GIrWfew8wiO2rRc0Fozg4eYhrWHqZFneI0UlWzg==}
     cpu: [x64]
     os: [darwin]
 
-  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251117.1':
-    resolution: {integrity: sha512-YSkmJb4/WrS6ZMEJSDbv5o2Garms3+3yKsH+Y3JLUab0namf1Br7T53ydW7ijV2rE7j9DgJs9P+GNu8753St3Q==}
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251118.1':
+    resolution: {integrity: sha512-8ekzTFSCci6utz6OXRasREudIihydjPU+G/Mp05cZGkTyF+Jgwge/JSmMnJ3OuC0GOq6At+aHVzj/xzJ2wvA9w==}
     cpu: [arm64]
     os: [linux]
 
-  '@typescript/native-preview-linux-arm@7.0.0-dev.20251117.1':
-    resolution: {integrity: sha512-Mfnc8CytGICsYJCMbu3FwE/KDcVg4/QTFix6O31oUkj9ERp3zbSePVMQulkJTH2vuhDvJnVISHzIYawtq5QPTQ==}
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20251118.1':
+    resolution: {integrity: sha512-+SpJsGnueItXLmL6PJgvwel3+moqH4Tr9PUQOOYFwXIYYE08b7coYT7SjWqgA5cRh7obOc3L5ajOgFoHittTBg==}
     cpu: [arm]
     os: [linux]
 
-  '@typescript/native-preview-linux-x64@7.0.0-dev.20251117.1':
-    resolution: {integrity: sha512-R5KvnKuGsbozjHbmA+zPa4xVkQSutvtU9/PQJ7vjJL0xsvSsRUgOE2V2jlT+KnfjAhYVoIg2njtHdf0uv5k9Ow==}
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20251118.1':
+    resolution: {integrity: sha512-u+JoZzThEeyZ7aPPgzfAVeFy84Zo9hdRtARxnb1FN+LagpBAQfs11g6BTmcpo2wUNzkKTHQxJi6c7Zekp8O4FQ==}
     cpu: [x64]
     os: [linux]
 
-  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251117.1':
-    resolution: {integrity: sha512-xfEwDD9BwCm2gFf0AePfvXxjgQ/EDBDLRbSejtShTSFwrgdnRJ7iW63/ns/i31qLesTzGZaLxeAV8zgh6C2Ibg==}
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251118.1':
+    resolution: {integrity: sha512-At7qHhLxflc3ZUSbuTP/VPvp5s9AHvFbIPxpEX0g+uHBzUkgEuJ32pIvL3szkkfwHGUdlRrMfn8CY5fuZGyWIg==}
     cpu: [arm64]
     os: [win32]
 
-  '@typescript/native-preview-win32-x64@7.0.0-dev.20251117.1':
-    resolution: {integrity: sha512-GhJ4GIygHSU86gZw6NkOnJKi/XW0Yw+1quanZ6BaOAZ+HY6aftuESy+NlbC6nUSGE2xmbvxqJgqchCIlC6YPoA==}
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20251118.1':
+    resolution: {integrity: sha512-nyhMXoU3g1NkKZ4erZPvHB6JUpnEOIJXHnvFgXfOgrCh/KA0JPqUOk5ityE7n0xscTyleGEMptTW4Xbg8XH/+A==}
     cpu: [x64]
     os: [win32]
 
-  '@typescript/native-preview@7.0.0-dev.20251117.1':
-    resolution: {integrity: sha512-JgKY4Q6jRCszCJ46c8tVrGVnmdiRPSKTW0UQvcyxdI7LG9NYMchJ/W7iUyFZVjG8BV1iUTl3DYml1xErPHLKeg==}
+  '@typescript/native-preview@7.0.0-dev.20251118.1':
+    resolution: {integrity: sha512-rf6L3/MhHM3xFvmO3kidqdH5Q4N+U8+accIVTewqsyu35Uku7iWHfsv1zwyQEVT74LH/MCfBiShYYCi1Juh03g==}
     hasBin: true
 
   ansis@4.2.0:
@@ -1326,7 +1384,7 @@ snapshots:
 
   '@remix-run/html-template@0.2.0': {}
 
-  '@remix-run/interaction@0.1.0': {}
+  '@remix-run/interaction@0.2.1': {}
 
   '@remix-run/multipart-parser@0.12.0':
     dependencies:
@@ -1441,36 +1499,36 @@ snapshots:
 
   '@types/dom-navigation@1.0.6': {}
 
-  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251117.1':
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251118.1':
     optional: true
 
-  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251117.1':
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251118.1':
     optional: true
 
-  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251117.1':
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251118.1':
     optional: true
 
-  '@typescript/native-preview-linux-arm@7.0.0-dev.20251117.1':
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20251118.1':
     optional: true
 
-  '@typescript/native-preview-linux-x64@7.0.0-dev.20251117.1':
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20251118.1':
     optional: true
 
-  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251117.1':
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251118.1':
     optional: true
 
-  '@typescript/native-preview-win32-x64@7.0.0-dev.20251117.1':
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20251118.1':
     optional: true
 
-  '@typescript/native-preview@7.0.0-dev.20251117.1':
+  '@typescript/native-preview@7.0.0-dev.20251118.1':
     optionalDependencies:
-      '@typescript/native-preview-darwin-arm64': 7.0.0-dev.20251117.1
-      '@typescript/native-preview-darwin-x64': 7.0.0-dev.20251117.1
-      '@typescript/native-preview-linux-arm': 7.0.0-dev.20251117.1
-      '@typescript/native-preview-linux-arm64': 7.0.0-dev.20251117.1
-      '@typescript/native-preview-linux-x64': 7.0.0-dev.20251117.1
-      '@typescript/native-preview-win32-arm64': 7.0.0-dev.20251117.1
-      '@typescript/native-preview-win32-x64': 7.0.0-dev.20251117.1
+      '@typescript/native-preview-darwin-arm64': 7.0.0-dev.20251118.1
+      '@typescript/native-preview-darwin-x64': 7.0.0-dev.20251118.1
+      '@typescript/native-preview-linux-arm': 7.0.0-dev.20251118.1
+      '@typescript/native-preview-linux-arm64': 7.0.0-dev.20251118.1
+      '@typescript/native-preview-linux-x64': 7.0.0-dev.20251118.1
+      '@typescript/native-preview-win32-arm64': 7.0.0-dev.20251118.1
+      '@typescript/native-preview-win32-x64': 7.0.0-dev.20251118.1
 
   ansis@4.2.0: {}
 
@@ -1637,7 +1695,7 @@ snapshots:
 
   resolve-pkg-maps@1.0.0: {}
 
-  rolldown-plugin-dts@0.17.7(@typescript/native-preview@7.0.0-dev.20251117.1)(ms@2.1.3)(rolldown@1.0.0-beta.45):
+  rolldown-plugin-dts@0.17.7(@typescript/native-preview@7.0.0-dev.20251118.1)(ms@2.1.3)(rolldown@1.0.0-beta.45):
     dependencies:
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
@@ -1650,7 +1708,7 @@ snapshots:
       obug: 1.0.0(ms@2.1.3)
       rolldown: 1.0.0-beta.45
     optionalDependencies:
-      '@typescript/native-preview': 7.0.0-dev.20251117.1
+      '@typescript/native-preview': 7.0.0-dev.20251118.1
     transitivePeerDependencies:
       - ms
       - oxc-resolver
@@ -1725,7 +1783,7 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
-  tsdown@0.15.12(@typescript/native-preview@7.0.0-dev.20251117.1)(ms@2.1.3):
+  tsdown@0.15.12(@typescript/native-preview@7.0.0-dev.20251118.1)(ms@2.1.3):
     dependencies:
       ansis: 4.2.0
       cac: 6.7.14
@@ -1735,7 +1793,7 @@ snapshots:
       empathic: 2.0.0
       hookable: 5.5.3
       rolldown: 1.0.0-beta.45
-      rolldown-plugin-dts: 0.17.7(@typescript/native-preview@7.0.0-dev.20251117.1)(ms@2.1.3)(rolldown@1.0.0-beta.45)
+      rolldown-plugin-dts: 0.17.7(@typescript/native-preview@7.0.0-dev.20251118.1)(ms@2.1.3)(rolldown@1.0.0-beta.45)
       semver: 7.7.3
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
